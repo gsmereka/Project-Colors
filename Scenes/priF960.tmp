@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://b77oq2qdlpkfj"]
+
+[ext_resource type="Shader" path="res://Shaders/grey.gdshader" id="1_1mx2n"]
+[ext_resource type="Texture2D" uid="uid://tvd0tl7e7q01" path="res://Sprites/house.jpg" id="2_1h6f1"]
+[ext_resource type="Shader" path="res://Shaders/red.gdshader" id="3_2kkbl"]
+[ext_resource type="Script" path="res://floor_textures.gd" id="4_w3pnf"]
+[ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="5_bhi0d"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="6_t8flc"]
+[ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="7_int64"]
+[ext_resource type="Texture2D" uid="uid://dahpnydsdfc21" path="res://Sprites/player_base.png" id="8_o7l1y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7nlx"]
+shader = ExtResource("1_1mx2n")
+shader_parameter/time = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_35nq5"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4cavg"]
+light_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ureuc"]
+shader = ExtResource("3_2kkbl")
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mpxwa"]
+light_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kebnw"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ipuyi"]
+closed = false
+polygon = PackedVector2Array(0, 0, 1000, 0)
+
+[node name="Primeira casa" type="Node2D"]
+
+[node name="Mapas" type="CanvasGroup" parent="."]
+
+[node name="House_shaders" type="Sprite2D" parent="Mapas"]
+self_modulate = Color(1, 0, 0, 1)
+material = SubResource("ShaderMaterial_e7nlx")
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="House_blue" type="Sprite2D" parent="Mapas"]
+visible = false
+self_modulate = Color(0.35, 0.35, 1, 1)
+material = SubResource("CanvasItemMaterial_35nq5")
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="House_normal" type="Sprite2D" parent="Mapas"]
+visible = false
+material = SubResource("CanvasItemMaterial_4cavg")
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="floor_textures" type="Node2D" parent="Mapas"]
+material = SubResource("ShaderMaterial_ureuc")
+script = ExtResource("4_w3pnf")
+
+[node name="House_normal2" type="Sprite2D" parent="Mapas/floor_textures"]
+use_parent_material = true
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="House_red3" type="Sprite2D" parent="Mapas"]
+visible = false
+self_modulate = Color(1, 0.501961, 0.501961, 1)
+material = SubResource("CanvasItemMaterial_4cavg")
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="House_yellow" type="Sprite2D" parent="Mapas"]
+visible = false
+self_modulate = Color(1, 0.901961, 0, 1)
+material = SubResource("CanvasItemMaterial_4cavg")
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="House_green" type="Sprite2D" parent="Mapas"]
+visible = false
+self_modulate = Color(0.575, 1, 0.5, 1)
+material = SubResource("CanvasItemMaterial_4cavg")
+scale = Vector2(4, 4)
+texture = ExtResource("2_1h6f1")
+
+[node name="Node2D" type="Node2D" parent="Mapas"]
+material = SubResource("CanvasItemMaterial_mpxwa")
+
+[node name="Light" type="Sprite2D" parent="Mapas/Node2D"]
+use_parent_material = true
+position = Vector2(-53, 432)
+texture = ExtResource("5_bhi0d")
+
+[node name="Player" type="CharacterBody2D" parent="Mapas"]
+script = ExtResource("6_t8flc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapas/Player"]
+shape = SubResource("CircleShape2D_xvj1p")
+
+[node name="Cw" type="Sprite2D" parent="Mapas/Player"]
+visible = false
+self_modulate = Color(1, 0, 0, 0.572549)
+material = SubResource("CanvasItemMaterial_kebnw")
+position = Vector2(-11, -2)
+texture = ExtResource("7_int64")
+
+[node name="fov" type="Node2D" parent="Mapas/Player"]
+
+[node name="small_l" type="PointLight2D" parent="Mapas/Player/fov"]
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("7_int64")
+texture_scale = 0.1
+
+[node name="big_l" type="PointLight2D" parent="Mapas/Player/fov"]
+position = Vector2(10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("7_int64")
+texture_scale = 3.0
+
+[node name="big_l2" type="PointLight2D" parent="Mapas/Player/fov"]
+visible = false
+position = Vector2(10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("5_bhi0d")
+texture_scale = 5.0
+
+[node name="left" type="LightOccluder2D" parent="Mapas/Player/fov"]
+rotation = -0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+
+[node name="right" type="LightOccluder2D" parent="Mapas/Player/fov"]
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+
+[node name="PlayerBase" type="Sprite2D" parent="Mapas/Player"]
+position = Vector2(50, 0)
+rotation = 1.5708
+texture = ExtResource("8_o7l1y")
+
+[node name="Camera2D" type="Camera2D" parent="Mapas/Player"]

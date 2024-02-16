@@ -1,0 +1,64 @@
+shader_type canvas_item;
+//render_mode light_only;
+//uniform vec4 modulate : hint_color = vec4(1.0);
+
+uniform float time = 5;
+
+void fragment() {
+    // Obter a cor original do fragmento
+    vec4 original_color = texture(TEXTURE, UV);
+
+    // Calcular a média dos componentes de cor para obter a escala de cinza
+    float gray = (original_color.r + original_color.g + original_color.b) / 3.0;
+
+    // Verificar se a cor original é verde
+    if (original_color.g > original_color.r && original_color.g > original_color.b) {
+        // Se a cor original for verde, manter a cor original
+        COLOR = original_color;
+    } else {
+        // Caso contrário, definir a cor do fragmento para a escala de cinza
+        COLOR = vec4(gray, gray, gray, original_color.a);
+    }
+}
+
+//void fragment() {
+    //// Obter a cor original do fragmento
+    //vec4 original_color = texture(TEXTURE, UV);
+//
+    //// Calcular a média dos componentes de cor para obter a escala de cinza
+    //float gray = (original_color.r + original_color.g + original_color.b) / 3.0;
+//
+    //// Adicionar uma onda suave baseada no tempo para criar um efeito de água
+    //float wave = sin(UV.x * 10.0 + time) * 0.05;
+//
+    //// Definir a cor do fragmento para a escala de cinza com o efeito de água
+    //COLOR = vec4(gray + wave, gray + wave, gray + wave, original_color.a);
+//}
+
+//void fragment() {
+    //// Obter a cor original do fragmento
+    //vec4 original_color = texture(TEXTURE, UV);
+//
+    //// Calcular a média dos componentes de cor para obter a escala de cinza
+    //float gray = (original_color.r + original_color.g + original_color.b) / 3.0;
+//
+    //// Definir a cor do fragmento para a escala de cinza
+    //COLOR = vec4(gray, gray, gray, original_color.a);
+//}
+
+//void fragment(){
+  //COLOR = vec4(0.4, 0.6, 0.9, 1.0);
+//}
+
+//void fragmen2t(){
+	//vec4 color = texture(TEXTURE,UV);
+//
+	//if (color.a == 1.0)
+	//{
+    	//if (color.rgb != vec3(1.0) && color.rgb != vec3(0.0))
+		//{
+        	//color *= vec4(1.0);
+    	//}
+	//}
+	//COLOR = color;
+//}

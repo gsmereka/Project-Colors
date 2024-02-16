@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://nplu4kvmx5q3"]
+
+[ext_resource type="Shader" path="res://Shaders/filter_red.gdshader" id="1_57usk"]
+[ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="2_u400q"]
+[ext_resource type="Script" path="res://Scripts/Color_Shader.gd" id="3_s32er"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlxns"]
+shader = ExtResource("1_57usk")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/level = 0.3
+
+[node name="Color_Shader" type="Sprite2D"]
+material = SubResource("ShaderMaterial_mlxns")
+position = Vector2(296.5, 209)
+scale = Vector2(108.313, 49.9)
+texture = ExtResource("2_u400q")
+script = ExtResource("3_s32er")

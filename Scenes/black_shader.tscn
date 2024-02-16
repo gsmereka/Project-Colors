@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw3ujn6j2u8bf"]
+
+[ext_resource type="Shader" path="res://Shaders/filter_gray.gdshader" id="1_8u8cc"]
+[ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="2_dug38"]
+[ext_resource type="Script" path="res://Scripts/back_shader.gd" id="3_2rgn1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x24l0"]
+shader = ExtResource("1_8u8cc")
+
+[node name="Black_Shader" type="Sprite2D"]
+material = SubResource("ShaderMaterial_x24l0")
+position = Vector2(288.5, 232.5)
+scale = Vector2(108.563, 50.55)
+texture = ExtResource("2_dug38")
+script = ExtResource("3_2rgn1")

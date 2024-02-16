@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdsh7jjgg0ctc"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
+[ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
+[ext_resource type="Texture2D" uid="uid://dahpnydsdfc21" path="res://Sprites/player_base.png" id="4_4xe3e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
+radius = 25.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kebnw"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ipuyi"]
+closed = false
+polygon = PackedVector2Array(0, 0, 1000, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irwnb"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-828, 138)
+script = ExtResource("1_ngwv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 2)
+shape = SubResource("CircleShape2D_xvj1p")
+
+[node name="Cw" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 0, 0, 0.572549)
+material = SubResource("CanvasItemMaterial_kebnw")
+position = Vector2(-11, -2)
+texture = ExtResource("2_b748r")
+
+[node name="fov" type="Node2D" parent="."]
+
+[node name="small_l" type="PointLight2D" parent="fov"]
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_b748r")
+offset = Vector2(10, 0)
+texture_scale = 0.15
+
+[node name="big_l" type="PointLight2D" parent="fov"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_b748r")
+texture_scale = 3.0
+
+[node name="left" type="LightOccluder2D" parent="fov"]
+rotation = -0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+
+[node name="right" type="LightOccluder2D" parent="fov"]
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+
+[node name="PlayerBase" type="Sprite2D" parent="."]
+position = Vector2(50, 0)
+rotation = 1.5708
+texture = ExtResource("4_4xe3e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+material = SubResource("ShaderMaterial_irwnb")
