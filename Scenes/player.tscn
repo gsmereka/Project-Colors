@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdsh7jjgg0ctc"]
+[gd_scene load_steps=16 format=3 uid="uid://cdsh7jjgg0ctc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
 [ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
+[ext_resource type="AudioStream" uid="uid://c2u7gdos8441w" path="res://Sound Effects/andando.mp3" id="2_fbw2c"]
+[ext_resource type="AudioStream" uid="uid://cnhelj34yt740" path="res://Sound Effects/90710__ledhed2222__laser_sustained.mp3" id="2_t2qqb"]
+[ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="3_nq1ja"]
 [ext_resource type="Texture2D" uid="uid://dahpnydsdfc21" path="res://Sprites/player_base.png" id="4_4xe3e"]
+[ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="5_3w08x"]
+[ext_resource type="PackedScene" uid="uid://nplu4kvmx5q3" path="res://Scenes/color_shader.tscn" id="6_kwi33"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
 radius = 25.0
@@ -14,11 +19,29 @@ light_mode = 2
 closed = false
 polygon = PackedVector2Array(0, 0, 1000, 0)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_67hjq"]
+closed = false
+polygon = PackedVector2Array(0, -5, 0, 5)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_irwnb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43q6l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ndntt"]
+blend_mode = 2
+light_mode = 2
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-828, 138)
 script = ExtResource("1_ngwv3")
+
+[node name="steps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fbw2c")
+
+[node name="laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t2qqb")
+volume_db = -5.0
+pitch_scale = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 2)
@@ -32,6 +55,7 @@ position = Vector2(-11, -2)
 texture = ExtResource("2_b748r")
 
 [node name="fov" type="Node2D" parent="."]
+visible = false
 
 [node name="small_l" type="PointLight2D" parent="fov"]
 position = Vector2(-10, 0)
@@ -40,6 +64,15 @@ shadow_enabled = true
 texture = ExtResource("2_b748r")
 offset = Vector2(10, 0)
 texture_scale = 0.15
+
+[node name="small_l2" type="PointLight2D" parent="fov"]
+visible = false
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_nq1ja")
+offset = Vector2(10, 0)
+texture_scale = 1.5
 
 [node name="big_l" type="PointLight2D" parent="fov"]
 light_mask = 3
@@ -58,6 +91,97 @@ occluder = SubResource("OccluderPolygon2D_ipuyi")
 rotation = 0.785398
 occluder = SubResource("OccluderPolygon2D_ipuyi")
 
+[node name="fov2" type="Node2D" parent="."]
+visible = false
+
+[node name="small_l" type="PointLight2D" parent="fov2"]
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_b748r")
+offset = Vector2(10, 0)
+texture_scale = 0.15
+
+[node name="small_l2" type="PointLight2D" parent="fov2"]
+visible = false
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_nq1ja")
+offset = Vector2(10, 0)
+texture_scale = 1.5
+
+[node name="big_l" type="PointLight2D" parent="fov2"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(10, 0)
+blend_mode = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("2_b748r")
+texture_scale = 3.0
+
+[node name="left" type="LightOccluder2D" parent="fov2"]
+position = Vector2(0, -3)
+rotation = -0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+
+[node name="right" type="LightOccluder2D" parent="fov2"]
+position = Vector2(0, 3)
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="fov2"]
+occluder = SubResource("OccluderPolygon2D_67hjq")
+
+[node name="FOV" type="Node2D" parent="."]
+
+[node name="small_l" type="PointLight2D" parent="FOV"]
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_b748r")
+offset = Vector2(10, 0)
+texture_scale = 0.15
+
+[node name="small_l2" type="PointLight2D" parent="FOV"]
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_nq1ja")
+offset = Vector2(10, 0)
+texture_scale = 1.5
+
+[node name="big_l" type="PointLight2D" parent="FOV"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(34, 0)
+blend_mode = 2
+shadow_enabled = true
+shadow_item_cull_mask = 11
+texture = ExtResource("2_b748r")
+texture_scale = 3.0
+
+[node name="left" type="LightOccluder2D" parent="FOV"]
+position = Vector2(0, -5)
+rotation = -0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+occluder_light_mask = 8
+
+[node name="right" type="LightOccluder2D" parent="FOV"]
+position = Vector2(0, 5)
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+occluder_light_mask = 8
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FOV"]
+occluder = SubResource("OccluderPolygon2D_67hjq")
+occluder_light_mask = 8
+
+[node name="Color_Shader" parent="." instance=ExtResource("6_kwi33")]
+visible = false
+position = Vector2(-40.5, -34)
+
 [node name="PlayerBase" type="Sprite2D" parent="."]
 position = Vector2(50, 0)
 rotation = 1.5708
@@ -65,3 +189,29 @@ texture = ExtResource("4_4xe3e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_irwnb")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+z_index = 50
+scale = Vector2(3, 3)
+
+[node name="Shadow" type="Sprite2D" parent="CanvasGroup"]
+modulate = Color(0, 0, 0, 1)
+light_mask = 2
+material = SubResource("CanvasItemMaterial_43q6l")
+position = Vector2(1.00012, 1.50006)
+scale = Vector2(120, 53.55)
+texture = ExtResource("5_3w08x")
+
+[node name="Shadow_subtract" type="Sprite2D" parent="CanvasGroup"]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_ndntt")
+position = Vector2(-2, -0.5)
+scale = Vector2(119.5, 53.45)
+texture = ExtResource("5_3w08x")
+
+[node name="Shadow_light" type="PointLight2D" parent="CanvasGroup"]
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("2_b748r")
+texture_scale = 2.0

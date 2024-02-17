@@ -1,16 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://qr0hq2a7356x"]
+[gd_scene load_steps=9 format=3 uid="uid://qr0hq2a7356x"]
 
 [ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="1_th02j"]
 [ext_resource type="PackedScene" uid="uid://cdsh7jjgg0ctc" path="res://Scenes/player.tscn" id="2_ayxw8"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_okdkc"]
 [ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="2_p4fbu"]
 [ext_resource type="PackedScene" uid="uid://bw3ujn6j2u8bf" path="res://Scenes/black_shader.tscn" id="2_xc2aj"]
 [ext_resource type="PackedScene" uid="uid://nplu4kvmx5q3" path="res://Scenes/color_shader.tscn" id="3_e75ae"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2h6o"]
-light_mode = 2
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdjwc"]
 size = Vector2(183.815, 210.429)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2h6o"]
+light_mode = 2
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,7 +22,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Square" type="Sprite2D" parent="Map1"]
 self_modulate = Color(0.141176, 0.0941176, 0.113725, 0.698039)
 position = Vector2(881, 469)
-scale = Vector2(199.875, 95.3)
+scale = Vector2(409.125, 95.3)
 texture = ExtResource("1_th02j")
 
 [node name="Square2" type="Sprite2D" parent="Map1"]
@@ -32,8 +33,14 @@ texture = ExtResource("1_th02j")
 
 [node name="Square5" type="Sprite2D" parent="Map1"]
 self_modulate = Color(0.141176, 0.0941176, 0.34902, 1)
-position = Vector2(2381, 463)
-scale = Vector2(15.4375, 95.3)
+position = Vector2(2381, -142)
+scale = Vector2(15.4375, 34.8)
+texture = ExtResource("1_th02j")
+
+[node name="Square7" type="Sprite2D" parent="Map1"]
+self_modulate = Color(0.141176, 0.0941176, 0.34902, 1)
+position = Vector2(2404, 1122)
+scale = Vector2(15.4375, 32.6)
 texture = ExtResource("1_th02j")
 
 [node name="Square4" type="Sprite2D" parent="Map1"]
@@ -56,29 +63,108 @@ rotation = 1.57088
 scale = Vector2(15.4375, 148.932)
 texture = ExtResource("1_th02j")
 
-[node name="yellow_dimension" type="Node2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="Map1"]
+position = Vector2(868, 748)
+rotation = 3.14159
+scale = Vector2(1.34918, -4.06788)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map1/StaticBody2D"]
+position = Vector2(1.48248, 0.983353)
+shape = SubResource("RectangleShape2D_wdjwc")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Map1"]
+position = Vector2(2404, -96)
+rotation = 3.14159
+scale = Vector2(1.35, -2.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map1/StaticBody2D6"]
+position = Vector2(1.48248, 0.983353)
+shape = SubResource("RectangleShape2D_wdjwc")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Map1"]
+position = Vector2(2400, 1084)
+rotation = 3.14159
+scale = Vector2(1.35, -2.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map1/StaticBody2D7"]
+position = Vector2(1.48248, 0.983353)
+shape = SubResource("RectangleShape2D_wdjwc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map1"]
+position = Vector2(412, 1312)
+rotation = -1.56972
+scale = Vector2(1.35, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map1/StaticBody2D2"]
+position = Vector2(1.48242, -24.1)
+shape = SubResource("RectangleShape2D_wdjwc")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Map1"]
+position = Vector2(412, 1312)
+rotation = -1.56972
+scale = Vector2(1.35, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map1/StaticBody2D3"]
+position = Vector2(1241.84, -22.7101)
+shape = SubResource("RectangleShape2D_wdjwc")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Map1"]
+position = Vector2(-1256, 1208)
+rotation = 0.00405726
+scale = Vector2(1.35, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map1/StaticBody2D4"]
+position = Vector2(484.463, -1.16494)
+shape = SubResource("RectangleShape2D_wdjwc")
+
+[node name="red_dimension" type="Node2D" parent="."]
+visible = false
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
 
-[node name="Light" type="Sprite2D" parent="yellow_dimension"]
+[node name="Light" type="Sprite2D" parent="red_dimension"]
 use_parent_material = true
-position = Vector2(757, 357)
+position = Vector2(505, 473)
 texture = ExtResource("2_p4fbu")
 
+[node name="wall" type="Sprite2D" parent="red_dimension"]
+visible = false
+position = Vector2(1053, 235)
+scale = Vector2(7.625, 14.7)
+texture = ExtResource("1_th02j")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="red_dimension"]
+position = Vector2(1054, 233)
+rotation = -3.14159
+scale = Vector2(0.675, -1.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="red_dimension/StaticBody2D5"]
+position = Vector2(1.48248, 0.983353)
+shape = SubResource("RectangleShape2D_wdjwc")
+script = ExtResource("2_okdkc")
+
+[node name="Square8" type="Sprite2D" parent="red_dimension"]
+self_modulate = Color(0.141176, 0.0941176, 0.34902, 1)
+use_parent_material = true
+position = Vector2(1051, 229)
+scale = Vector2(7.74999, 15.7)
+texture = ExtResource("1_th02j")
+
 [node name="blue_dimension" type="Node2D" parent="."]
+visible = false
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
 
 [node name="Light" type="Sprite2D" parent="blue_dimension"]
 use_parent_material = true
-position = Vector2(757, 357)
+position = Vector2(588, 97)
 texture = ExtResource("2_p4fbu")
 
-[node name="red_dimension" type="Node2D" parent="."]
+[node name="yellow_dimension" type="Node2D" parent="."]
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
 
-[node name="Light" type="Sprite2D" parent="red_dimension"]
+[node name="Light" type="Sprite2D" parent="yellow_dimension"]
 use_parent_material = true
 position = Vector2(757, 357)
 texture = ExtResource("2_p4fbu")
@@ -89,65 +175,3 @@ texture = ExtResource("2_p4fbu")
 
 [node name="Player" parent="." instance=ExtResource("2_ayxw8")]
 position = Vector2(32, 390)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(288, 359)
-scale = Vector2(-0.67459, 2.03394)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1.48248, 0.983353)
-shape = SubResource("RectangleShape2D_wdjwc")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="."]
-position = Vector2(1054, 233)
-scale = Vector2(-0.675, 1.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-position = Vector2(1.48248, 0.983353)
-shape = SubResource("RectangleShape2D_wdjwc")
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="."]
-position = Vector2(1056, -63)
-scale = Vector2(-0.675, 1.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
-position = Vector2(1.48248, 0.983353)
-shape = SubResource("RectangleShape2D_wdjwc")
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="."]
-position = Vector2(1054, 527)
-scale = Vector2(-0.675, 1.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
-position = Vector2(1.48248, 0.983353)
-shape = SubResource("RectangleShape2D_wdjwc")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(60, 641)
-rotation = 1.57187
-scale = Vector2(-0.675, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(1.48242, -24.1)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_wdjwc")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(60, 641)
-rotation = 1.57187
-scale = Vector2(-0.675, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(1241.84, -22.7101)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_wdjwc")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-774, 589)
-rotation = 3.14565
-scale = Vector2(-0.675, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(484.463, -1.16494)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_wdjwc")

@@ -1,9 +1,6 @@
-extends Node
+extends CollisionShape2D
 
-var player_node: CharacterBody2D
-var color_shader: Sprite2D
-var dimension_list: Array = []
-var actual_dimension
+@export var dimension: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,4 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (Global.actual_dimension == Global.dimension_list[dimension]):
+		self.disabled = false
+	else:
+		self.disabled = true
 	pass
