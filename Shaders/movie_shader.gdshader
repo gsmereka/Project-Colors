@@ -50,10 +50,10 @@ void fragment() {
 	COLOR = mix(grayscale, grayscale3, projector_power);
 }
 
-//void light ()
-//{
-	//vec4 gray2 = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
-//
-	//if (LIGHT_COLOR.a == 1.0)
-		//LIGHT = gray2;
-//}
+void light ()
+{
+	vec4 gray2 = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
+
+	if (LIGHT_COLOR.a == 1.0)
+		LIGHT = gray2;
+}
