@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ytsj7423nsd2"]
+
+[ext_resource type="Shader" path="res://Shaders/movie_shader.gdshader" id="1_6mkcf"]
+[ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="2_kf8vy"]
+[ext_resource type="Script" path="res://Scripts/folow_player.gd" id="3_c8qge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rd5pu"]
+shader = ExtResource("1_6mkcf")
+shader_parameter/projector_power = 0.4
+shader_parameter/vignette_param = 5.0
+
+[node name="movie_shader" type="Sprite2D"]
+light_mask = 31
+visibility_layer = 31
+material = SubResource("ShaderMaterial_rd5pu")
+position = Vector2(-2325, 1947)
+scale = Vector2(108.25, 53.05)
+texture = ExtResource("2_kf8vy")
+script = ExtResource("3_c8qge")

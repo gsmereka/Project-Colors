@@ -133,27 +133,28 @@ position = Vector2(1053, 235)
 scale = Vector2(7.625, 14.7)
 texture = ExtResource("1_th02j")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="red_dimension"]
-position = Vector2(1054, 233)
-rotation = -3.14159
-scale = Vector2(0.675, -1.4)
+[node name="blue_dimension" type="Node2D" parent="."]
+visible = false
+clip_children = 1
+material = SubResource("CanvasItemMaterial_j2h6o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="red_dimension/StaticBody2D5"]
-position = Vector2(1.48248, 0.983353)
-shape = SubResource("RectangleShape2D_wdjwc")
-script = ExtResource("2_okdkc")
-
-[node name="Square8" type="Sprite2D" parent="red_dimension"]
+[node name="Square8" type="Sprite2D" parent="blue_dimension"]
 self_modulate = Color(0.141176, 0.0941176, 0.34902, 1)
 use_parent_material = true
 position = Vector2(1051, 229)
 scale = Vector2(7.74999, 15.7)
 texture = ExtResource("1_th02j")
 
-[node name="blue_dimension" type="Node2D" parent="."]
-visible = false
-clip_children = 1
-material = SubResource("CanvasItemMaterial_j2h6o")
+[node name="StaticBody2D5" type="StaticBody2D" parent="blue_dimension"]
+position = Vector2(1054, 233)
+rotation = -3.14159
+scale = Vector2(0.675, -1.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blue_dimension/StaticBody2D5"]
+position = Vector2(1.48248, 0.983353)
+shape = SubResource("RectangleShape2D_wdjwc")
+script = ExtResource("2_okdkc")
+dimension = 1
 
 [node name="Light" type="Sprite2D" parent="blue_dimension"]
 use_parent_material = true
