@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b77oq2qdlpkfj"]
+[gd_scene load_steps=82 format=3 uid="uid://b77oq2qdlpkfj"]
 
 [ext_resource type="Shader" path="res://Shaders/grey.gdshader" id="1_1mx2n"]
 [ext_resource type="Texture2D" uid="uid://tvd0tl7e7q01" path="res://Sprites/house.jpg" id="2_1h6f1"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cdsh7jjgg0ctc" path="res://Scenes/player.tscn" id="6_brblj"]
 [ext_resource type="Texture2D" uid="uid://bew2cxg0wnl6k" path="res://Sprites/mapa_test.png" id="6_qg4lp"]
 [ext_resource type="PackedScene" uid="uid://bw3ujn6j2u8bf" path="res://Scenes/black_shader.tscn" id="7_iwnfy"]
+[ext_resource type="Texture2D" uid="uid://bqqfaqcoyvowj" path="res://Sprites/armario.bmp" id="7_kbm3s"]
 [ext_resource type="PackedScene" uid="uid://nplu4kvmx5q3" path="res://Scenes/color_shader.tscn" id="8_g4e2n"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="8_gk1qc"]
 [ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="10_1lx05"]
 [ext_resource type="PackedScene" uid="uid://ytsj7423nsd2" path="res://Scenes/movie_shader.tscn" id="11_8s1g4"]
 
@@ -26,6 +28,25 @@ shader = ExtResource("3_2kkbl")
 shader_parameter/color = Color(0.686275, 0, 0, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mpxwa"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ljbym"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3rqp3"]
+closed = false
+polygon = PackedVector2Array(66.2557, 100.833, 66.7488, -99.1692)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kmdnn"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lvcj"]
+size = Vector2(133.49, 201.339)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k8bet"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0q2io"]
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5jyp"]
@@ -50,7 +71,7 @@ b = Vector2(314, -98)
 size = Vector2(759, 1093)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvsxw"]
-size = Vector2(76, 213)
+size = Vector2(76, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pbc8"]
 size = Vector2(193, 754)
@@ -175,7 +196,7 @@ polygon = PackedVector2Array(-2745, 1360, -1997, 1357, -1991, 3117, -3677, 3108,
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xk05v"]
 closed = false
-polygon = PackedVector2Array(-2922, -37, -2946, -34, -3676, -35, -3677, 1365, -2943, 1361, -2906, 1356)
+polygon = PackedVector2Array(-2922, -37, -2946, -34, -3676, -35, -3677, 1365, -2943, 1361, -2895, 1328)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_alycl"]
 closed = false
@@ -183,7 +204,7 @@ polygon = PackedVector2Array(-2705, -35, -1991, -34, -1992, 400)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_frb08"]
 closed = false
-polygon = PackedVector2Array(-1992, 603, -1993, 1365, -2717.16, 1363.07, -2745, 1357)
+polygon = PackedVector2Array(-1992, 603, -1993, 1365, -2717.16, 1363.07, -2741, 1327)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uofs2"]
 closed = false
@@ -293,10 +314,68 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_qg4lp")
 
 [node name="blue_dimension" type="Node2D" parent="."]
+clip_children = 1
+material = SubResource("CanvasItemMaterial_ljbym")
+
+[node name="armario_mapa_1" type="StaticBody2D" parent="blue_dimension"]
+use_parent_material = true
+position = Vector2(-2841, 1429)
+rotation = -1.56826
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="blue_dimension/armario_mapa_1"]
+use_parent_material = true
+occluder = SubResource("OccluderPolygon2D_3rqp3")
+occluder_light_mask = 0
+
+[node name="Square" type="Sprite2D" parent="blue_dimension/armario_mapa_1"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+light_mask = 31
+material = SubResource("CanvasItemMaterial_kmdnn")
+position = Vector2(341.928, 70.0156)
+rotation = 1.56826
+scale = Vector2(74.3602, 27.525)
+texture = ExtResource("10_1lx05")
+
+[node name="Armario" type="Sprite2D" parent="blue_dimension/armario_mapa_1"]
+use_parent_material = true
+texture = ExtResource("7_kbm3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blue_dimension/armario_mapa_1"]
+position = Vector2(1.0011, 0.497314)
+shape = SubResource("RectangleShape2D_8lvcj")
+script = ExtResource("8_gk1qc")
+dimension = 1
 
 [node name="red_dimension" type="Node2D" parent="."]
+visible = false
+clip_children = 1
+material = SubResource("CanvasItemMaterial_k8bet")
 
 [node name="yellow_dimension" type="Node2D" parent="."]
+visible = false
+clip_children = 1
+material = SubResource("CanvasItemMaterial_0q2io")
+
+[node name="armario_mapa_1" type="StaticBody2D" parent="yellow_dimension"]
+use_parent_material = true
+position = Vector2(-2841, 1429)
+rotation = -1.56826
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="yellow_dimension/armario_mapa_1"]
+use_parent_material = true
+occluder = SubResource("OccluderPolygon2D_3rqp3")
+occluder_light_mask = 0
+
+[node name="Armario" type="Sprite2D" parent="yellow_dimension/armario_mapa_1"]
+use_parent_material = true
+texture = ExtResource("7_kbm3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="yellow_dimension/armario_mapa_1"]
+position = Vector2(1.0011, 0.497314)
+shape = SubResource("RectangleShape2D_8lvcj")
+script = ExtResource("8_gk1qc")
+dimension = 2
 
 [node name="Black_Shader" parent="." instance=ExtResource("7_iwnfy")]
 position = Vector2(-2370.5, 1794.5)
@@ -310,42 +389,43 @@ position = Vector2(-2370.5, 1794.5)
 [node name="Top_Textures" type="Node2D" parent="."]
 
 [node name="2-4" type="Sprite2D" parent="Top_Textures"]
-modulate = Color(0.12549, 0.12549, 0.12549, 1)
-position = Vector2(-2813, -52.75)
-scale = Vector2(16.125, 1.975)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-2813, -52.25)
+scale = Vector2(16.125, 2.025)
 texture = ExtResource("10_1lx05")
 
 [node name="1-2" type="Sprite2D" parent="Top_Textures"]
-modulate = Color(0.129412, 0.129412, 0.129412, 1)
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-2811.5, 1345.5)
 scale = Vector2(11.9375, 1.75)
 texture = ExtResource("10_1lx05")
 
 [node name="2-3" type="Sprite2D" parent="Top_Textures"]
-modulate = Color(0.231373, 0.231373, 0.231373, 1)
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-1979, 503)
-scale = Vector2(1.74998, 10.3)
+scale = Vector2(1.74998, 11.4)
 texture = ExtResource("10_1lx05")
 
 [node name="4-5" type="Sprite2D" parent="Top_Textures"]
-modulate = Color(0.45098, 0.45098, 0.45098, 1)
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-1501.5, -1653)
 scale = Vector2(4.5625, 19.7)
 texture = ExtResource("10_1lx05")
 
 [node name="5-6a" type="Sprite2D" parent="Top_Textures"]
-modulate = Color(0.45098, 0.45098, 0.45098, 1)
+modulate = Color(0, 0, 0, 1)
 position = Vector2(626, -506)
 scale = Vector2(10.5, 16.7)
 texture = ExtResource("10_1lx05")
 
 [node name="5-6c" type="Sprite2D" parent="Top_Textures"]
-modulate = Color(0.0784314, 0.0784314, 0.0784314, 1)
+modulate = Color(0, 0, 0, 1)
 position = Vector2(627, -218)
 scale = Vector2(11.375, 12.2)
 texture = ExtResource("10_1lx05")
 
 [node name="colisions" type="Node2D" parent="."]
+visible = false
 
 [node name="mapa_1" type="StaticBody2D" parent="colisions"]
 position = Vector2(-3583, 2846)
@@ -383,7 +463,11 @@ position = Vector2(724.5, -641.5)
 shape = SubResource("RectangleShape2D_1e3g4")
 
 [node name="Sofa" type="CollisionShape2D" parent="colisions/mapa_1"]
-position = Vector2(55, -777.5)
+position = Vector2(55, -869)
+shape = SubResource("RectangleShape2D_rvsxw")
+
+[node name="Sofa2" type="CollisionShape2D" parent="colisions/mapa_1"]
+position = Vector2(53, -686)
 shape = SubResource("RectangleShape2D_rvsxw")
 
 [node name="mapa_2" type="StaticBody2D" parent="colisions"]
@@ -643,55 +727,58 @@ occluder_light_mask = 2
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="light_ocludders/mapa_2"]
 occluder = SubResource("OccluderPolygon2D_xk05v")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="light_ocludders/mapa_2"]
 occluder = SubResource("OccluderPolygon2D_alycl")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="light_ocludders/mapa_2"]
 occluder = SubResource("OccluderPolygon2D_frb08")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="mapa_3" type="Node2D" parent="light_ocludders"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="light_ocludders/mapa_3"]
 occluder = SubResource("OccluderPolygon2D_uofs2")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="mapa_4" type="Node2D" parent="light_ocludders"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="light_ocludders/mapa_4"]
 occluder = SubResource("OccluderPolygon2D_ttic5")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="light_ocludders/mapa_4"]
 occluder = SubResource("OccluderPolygon2D_h00gr")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="mapa_5" type="Node2D" parent="light_ocludders"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="light_ocludders/mapa_5"]
+position = Vector2(-6, 3)
 occluder = SubResource("OccluderPolygon2D_1itbj")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="light_ocludders/mapa_5"]
 occluder = SubResource("OccluderPolygon2D_mobng")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="mapa_6" type="Node2D" parent="light_ocludders"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="light_ocludders/mapa_6"]
 occluder = SubResource("OccluderPolygon2D_d6mni")
-occluder_light_mask = 3
+occluder_light_mask = 2
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="light_ocludders/mapa_6"]
 position = Vector2(174, -1)
 occluder = SubResource("OccluderPolygon2D_7t3b4")
+occluder_light_mask = 2
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="light_ocludders/mapa_6"]
 position = Vector2(1, -3)
 occluder = SubResource("OccluderPolygon2D_7t3b4")
+occluder_light_mask = 2
 
 [node name="movie_shader" parent="." instance=ExtResource("11_8s1g4")]
 visible = false
