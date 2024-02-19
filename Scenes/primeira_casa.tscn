@@ -492,6 +492,58 @@ rotation = -0.35842
 position = Vector2(-2390, -1735)
 rotation = -0.35842
 
+[node name="barril_pequeno_mapa4a22" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2399, -1838)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a23" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2308, -1845)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a24" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2212, -1848)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a25" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2117, -1847)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a26" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2040, -1847)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a27" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-1956, -1808)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a28" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-1919, -1893)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a29" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2489, -1848)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a30" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2568, -1828)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a31" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2649, -1789)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a32" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2717, -1724)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a33" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2782, -1653)
+rotation = -0.35842
+
+[node name="barril_pequeno_mapa4a34" parent="blue_dimension" instance=ExtResource("14_w726r")]
+position = Vector2(-2847, -1586)
+rotation = -0.35842
+
 [node name="barril_pequeno_mapa4a21" parent="blue_dimension" instance=ExtResource("14_w726r")]
 position = Vector2(-2326, -1639)
 rotation = -0.35842
@@ -683,6 +735,42 @@ position = Vector2(-2230, -1849)
 [node name="barril_pequeno_mapa4a33" parent="red_dimension" instance=ExtResource("14_w726r")]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(-2257, -1939)
+
+[node name="barril_pequeno_mapa4a34" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2330, -1846)
+
+[node name="barril_pequeno_mapa4a35" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2421, -1834)
+
+[node name="barril_pequeno_mapa4a36" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2515, -1834)
+
+[node name="barril_pequeno_mapa4a37" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2610, -1818)
+
+[node name="barril_pequeno_mapa4a38" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2669, -1747)
+
+[node name="barril_pequeno_mapa4a39" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2758, -1718)
+
+[node name="barril_pequeno_mapa4a40" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2140, -1839)
+
+[node name="barril_pequeno_mapa4a41" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-2053, -1873)
+
+[node name="barril_pequeno_mapa4a42" parent="red_dimension" instance=ExtResource("14_w726r")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-1996, -1793)
 
 [node name="barril_pequeno_mapa4a31" parent="red_dimension" instance=ExtResource("14_w726r")]
 modulate = Color(1, 1, 0, 1)
