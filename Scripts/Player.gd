@@ -15,7 +15,7 @@ var max_mana: float = 2000
 var	mana_decrease: float = 20.0
 var mana_increase: float = 20
 var color_array: Array = [Color(1,0,0,1), Color(0,0,1,1), Color(1,1,0,1)]
-var color_selected: int = 1
+#var color_selected: int = 1
 var laser_sound
 var steps
 var low_steps = preload("res://Sound Effects/andando.mp3")
@@ -43,8 +43,8 @@ func _ready():
 	laser_sound = get_node("laser")
 	steps = get_node("steps")
 	ray = get_node("ray_shader")
-	color_selected = 1
-	Global.actual_dimension = Global.dimension_list[color_selected]
+	Global.actual_color = 1
+	Global.actual_dimension = Global.dimension_list[Global.actual_color]
 	if (Global.actual_dimension):
 		Global.actual_dimension.visible = true
 
@@ -71,11 +71,11 @@ func change_lantern():
 	if (Input.is_action_just_pressed("Interact")):
 		if (Global.actual_dimension):
 			Global.actual_dimension.visible = false
-		color_selected += 1
-		if (color_selected == len(color_array)):
-			color_selected = 0
-		shader.material.set_shader_parameter("color", color_array[color_selected])
-		Global.actual_dimension = Global.dimension_list[color_selected]
+		Global.actual_color += 1
+		if (Global.actual_color == len(color_array)):
+			Global.actual_color = 0
+		shader.material.set_shader_parameter("color", color_array[Global.actual_color])
+		Global.actual_dimension = Global.dimension_list[Global.actual_color]
 		if (Global.actual_dimension):
 			Global.actual_dimension.visible = true
 		
@@ -99,7 +99,7 @@ func atack():
 		if (left.rotation >= 0):
 			left.rotation = 0
 	else:
-		shader.material.set_shader_parameter("color", color_array[color_selected])
+		shader.material.set_shader_parameter("color", color_array[Global.actual_color])
 		ray.visible = false
 		if (laser_sound.playing):
 			laser_sound.stop()

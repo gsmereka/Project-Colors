@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuah10lsybqrp"]
+
+[ext_resource type="Texture2D" uid="uid://c171bd2sa663s" path="res://Sprites/cenario/itens/barril pequeno.png" id="1_2x2eh"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_otjqw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0b4h1"]
+radius = 45.3
+
+[node name="barril_pequeno_mapa4a" type="StaticBody2D"]
+use_parent_material = true
+position = Vector2(-2350, -1495)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(3, 3)
+texture = ExtResource("1_2x2eh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0b4h1")
+debug_color = Color(1, 1, 1, 0.419608)
+script = ExtResource("2_otjqw")

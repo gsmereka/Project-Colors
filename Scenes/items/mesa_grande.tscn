@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b468n3bfs62w3"]
+
+[ext_resource type="Texture2D" uid="uid://cfmkgvqivbvg5" path="res://Sprites/cenario/itens/mesa com copos em cima.png" id="1_p3i3p"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_gi7kr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en5kl"]
+size = Vector2(170.756, 787.982)
+
+[node name="mesa_grande_mapa_4a" type="StaticBody2D"]
+use_parent_material = true
+position = Vector2(-2925, -503)
+rotation = 1.35952
+
+[node name="Mesa1" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-0.167179, -0.985926)
+scale = Vector2(2, 2.082)
+texture = ExtResource("1_p3i3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.90002, 3.60718)
+rotation = -0.00192806
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_en5kl")
+debug_color = Color(1, 1, 1, 0.419608)
+script = ExtResource("2_gi7kr")
+dimension = 1

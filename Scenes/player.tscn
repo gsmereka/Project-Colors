@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdsh7jjgg0ctc"]
+[gd_scene load_steps=23 format=3 uid="uid://cdsh7jjgg0ctc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
 [ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
@@ -12,6 +12,7 @@
 [ext_resource type="VideoStream" path="res://old-film-grain-overlay-Video-Audio-footage-HD-Free.ogv" id="9_f3nq1"]
 [ext_resource type="Shader" path="res://Shaders/ray.gdshader" id="10_gs3h3"]
 [ext_resource type="Script" path="res://Scripts/VideoStreamPlayer.gd" id="10_tkxf8"]
+[ext_resource type="Texture2D" uid="uid://ccvdd4n2prlgn" path="res://Sprites/Player/player andando.png" id="13_ahsgv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
 radius = 25.0
@@ -247,9 +248,17 @@ visible = false
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 
 [node name="PlayerBase" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(50, 0)
 rotation = 1.5708
 texture = ExtResource("4_4xe3e")
+
+[node name="PlayerAndando" type="Sprite2D" parent="."]
+position = Vector2(22, 10)
+rotation = -1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("13_ahsgv")
+hframes = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_irwnb")

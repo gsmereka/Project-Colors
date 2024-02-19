@@ -4,6 +4,7 @@ var player_node: CharacterBody2D
 var color_shader: Sprite2D
 var dimension_list: Array = []
 var actual_dimension
+var	actual_color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

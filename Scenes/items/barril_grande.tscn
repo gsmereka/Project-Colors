@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7b8x56qbewkv"]
+
+[ext_resource type="Texture2D" uid="uid://dg3voql0dhavp" path="res://Sprites/cenario/itens/barril grande.png" id="1_8efnb"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_72ahu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psbll"]
+size = Vector2(161, 195)
+
+[node name="barril" type="StaticBody2D"]
+use_parent_material = true
+position = Vector2(-2834, -860)
+
+[node name="BarrilGrande" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(3, 3)
+texture = ExtResource("1_8efnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_psbll")
+debug_color = Color(1, 1, 1, 0.419608)
+script = ExtResource("2_72ahu")
