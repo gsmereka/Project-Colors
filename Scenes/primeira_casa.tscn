@@ -325,6 +325,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_xsg32")
 
 [node name="blue_dimension" type="Node2D" parent="."]
+visible = false
 modulate = Color(0, 0, 1, 1)
 clip_children = 1
 material = SubResource("CanvasItemMaterial_ljbym")
@@ -564,6 +565,7 @@ position = Vector2(-2268, -707)
 position = Vector2(-2655, -359)
 
 [node name="red_dimension" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 0, 0, 1)
 clip_children = 1
 material = SubResource("CanvasItemMaterial_k8bet")
@@ -777,6 +779,7 @@ modulate = Color(1, 1, 0, 1)
 position = Vector2(-2670, -1054)
 
 [node name="yellow_dimension" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 1, 0, 1)
 clip_children = 1
 material = SubResource("CanvasItemMaterial_0q2io")
