@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck03pxbukci3r"]
+
+[ext_resource type="Texture2D" uid="uid://dpnavutrswcu5" path="res://Sprites/cenario/itens/poltrona.png" id="1_u4kfe"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_db0mh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aipeg"]
+size = Vector2(101.015, 35.25)
+
+[node name="poltrona" type="StaticBody2D"]
+self_modulate = Color(1, 0, 0, 1)
+use_parent_material = true
+
+[node name="sofa" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(3.26667, 3.40123)
+texture = ExtResource("1_u4kfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -62)
+shape = SubResource("RectangleShape2D_aipeg")
+debug_color = Color(1, 1, 1, 0.419608)
+script = ExtResource("2_db0mh")
+dimension = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(6, 60)
+shape = SubResource("RectangleShape2D_aipeg")
+debug_color = Color(1, 1, 1, 0.419608)
+script = ExtResource("2_db0mh")
+dimension = 1
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-40.9439, -6.50732)
+rotation = 1.57942
+shape = SubResource("RectangleShape2D_aipeg")
+debug_color = Color(1, 1, 1, 0.419608)
+script = ExtResource("2_db0mh")
+dimension = 1

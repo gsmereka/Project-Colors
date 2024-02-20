@@ -31,10 +31,9 @@ var shader
 
 func _ready():
 	Global.player_node = self
-	Global.dimension_list.append(get_parent().get_node("red_dimension"))
-	Global.dimension_list.append(get_parent().get_node("blue_dimension"))
-	Global.dimension_list.append(get_parent().get_node("yellow_dimension"))
-	Global.actual_dimension = get_parent().get_node("yellow_dimension")
+	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("red_dimension"))
+	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("blue_dimension"))
+	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("yellow_dimension"))
 	shader = get_parent().get_node("Color_Shader")
 	if shader:
 		shader.material.set_shader_parameter("color", color_array[2])

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8611a82rd737"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51fh5"]
+size = Vector2(120, 120)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sw7by"]
+polygon = PackedVector2Array(-60, -60, 60, -60, 60, 60, -60, 60)
+
+[node name="Pilastra Quadrada" type="StaticBody2D"]
+position = Vector2(-286, -1087)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_51fh5")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_sw7by")
+occluder_light_mask = 2

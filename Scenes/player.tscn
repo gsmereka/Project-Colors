@@ -161,6 +161,7 @@ occluder = SubResource("OccluderPolygon2D_ipuyi")
 occluder = SubResource("OccluderPolygon2D_67hjq")
 
 [node name="FOV" type="Node2D" parent="."]
+position = Vector2(65, -1)
 
 [node name="small_l" type="PointLight2D" parent="FOV"]
 position = Vector2(-10, 0)
@@ -201,6 +202,51 @@ occluder = SubResource("OccluderPolygon2D_ipuyi")
 occluder_light_mask = 8
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="FOV"]
+occluder = SubResource("OccluderPolygon2D_67hjq")
+occluder_light_mask = 8
+
+[node name="FOV2" type="Node2D" parent="."]
+visible = false
+
+[node name="small_l" type="PointLight2D" parent="FOV2"]
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_b748r")
+offset = Vector2(10, 0)
+texture_scale = 0.15
+
+[node name="small_l2" type="PointLight2D" parent="FOV2"]
+position = Vector2(-10, 0)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_nq1ja")
+offset = Vector2(10, 0)
+texture_scale = 1.5
+
+[node name="big_l" type="PointLight2D" parent="FOV2"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(34, 0)
+blend_mode = 2
+shadow_enabled = true
+shadow_item_cull_mask = 9
+texture = ExtResource("2_b748r")
+texture_scale = 3.0
+
+[node name="left" type="LightOccluder2D" parent="FOV2"]
+position = Vector2(0, -5)
+rotation = -0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+occluder_light_mask = 8
+
+[node name="right" type="LightOccluder2D" parent="FOV2"]
+position = Vector2(0, 5)
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_ipuyi")
+occluder_light_mask = 8
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FOV2"]
 occluder = SubResource("OccluderPolygon2D_67hjq")
 occluder_light_mask = 8
 
