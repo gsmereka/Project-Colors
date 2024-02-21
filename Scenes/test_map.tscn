@@ -117,33 +117,35 @@ scale = Vector2(1.35, -20)
 position = Vector2(484.463, -1.16494)
 shape = SubResource("RectangleShape2D_wdjwc")
 
-[node name="red_dimension" type="Node2D" parent="."]
+[node name="dimensions" type="Node2D" parent="."]
+
+[node name="red_dimension" type="Node2D" parent="dimensions"]
 visible = false
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
 
-[node name="Light" type="Sprite2D" parent="red_dimension"]
+[node name="Light" type="Sprite2D" parent="dimensions/red_dimension"]
 use_parent_material = true
 position = Vector2(505, 473)
 texture = ExtResource("2_p4fbu")
 
-[node name="wall" type="Sprite2D" parent="red_dimension"]
+[node name="wall" type="Sprite2D" parent="dimensions/red_dimension"]
 visible = false
 position = Vector2(1053, 235)
 scale = Vector2(7.625, 14.7)
 texture = ExtResource("1_th02j")
 
-[node name="blue_dimension" type="Node2D" parent="."]
+[node name="blue_dimension" type="Node2D" parent="dimensions"]
 visible = false
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="blue_dimension"]
+[node name="StaticBody2D5" type="StaticBody2D" parent="dimensions/blue_dimension"]
 position = Vector2(1054, 233)
 rotation = -3.14159
 scale = Vector2(0.675, -1.4)
 
-[node name="Square8" type="Sprite2D" parent="blue_dimension/StaticBody2D5"]
+[node name="Square8" type="Sprite2D" parent="dimensions/blue_dimension/StaticBody2D5"]
 self_modulate = Color(0.141176, 0.0941176, 0.34902, 1)
 use_parent_material = true
 position = Vector2(4.44446, -2.85715)
@@ -151,22 +153,21 @@ rotation = -3.14159
 scale = Vector2(11.4815, -11.2143)
 texture = ExtResource("1_th02j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blue_dimension/StaticBody2D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dimensions/blue_dimension/StaticBody2D5"]
 position = Vector2(1.48248, 0.983353)
 shape = SubResource("RectangleShape2D_wdjwc")
 script = ExtResource("2_okdkc")
-dimension = 1
 
-[node name="Light" type="Sprite2D" parent="blue_dimension"]
+[node name="Light" type="Sprite2D" parent="dimensions/blue_dimension"]
 use_parent_material = true
 position = Vector2(588, 97)
 texture = ExtResource("2_p4fbu")
 
-[node name="yellow_dimension" type="Node2D" parent="."]
+[node name="yellow_dimension" type="Node2D" parent="dimensions"]
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
 
-[node name="Light" type="Sprite2D" parent="yellow_dimension"]
+[node name="Light" type="Sprite2D" parent="dimensions/yellow_dimension"]
 use_parent_material = true
 position = Vector2(757, 357)
 texture = ExtResource("2_p4fbu")

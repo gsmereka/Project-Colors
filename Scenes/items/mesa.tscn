@@ -23,4 +23,3 @@ rotation = -0.00192806
 shape = SubResource("RectangleShape2D_en5kl")
 debug_color = Color(1, 1, 1, 0.419608)
 script = ExtResource("2_5pjyt")
-dimension = 1

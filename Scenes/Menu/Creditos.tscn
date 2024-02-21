@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://jys3q0b2l2gc"]
+
+[ext_resource type="Texture2D" uid="uid://bmtn2rgscoq43" path="res://Sprites/cenario/tapete.png" id="1_mjqle"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(933, 52)
+
+[node name="Tapete" type="Sprite2D" parent="."]
+position = Vector2(839, 2616.63)
+scale = Vector2(6.01575, 18.3988)
+texture = ExtResource("1_mjqle")

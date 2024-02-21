@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
+@export var has_key: bool = false
 
 const SPEED = 300.0
 var speed: float
-var run_speed: float = 300
-var walk_speed: float = 150
+var run_speed: float = 400
+var walk_speed: float = 200
 var stamina: float = 0
 var max_stamina: float = 2000
 #var	stamina_decrease: float = 10
@@ -30,11 +31,17 @@ var	can_shot: bool = true
 var shader
 
 func _ready():
+	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	Global.player_node = self
+	if (self.visible == false):
+		self.visible = true
 	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("red_dimension"))
 	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("blue_dimension"))
 	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("yellow_dimension"))
-	shader = get_parent().get_node("Color_Shader")
+	Global.dimension_list[0].visible = false
+	Global.dimension_list[1].visible = false
+	Global.dimension_list[2].visible = false
+	shader = get_node("Color_Shader")
 	if shader:
 		shader.material.set_shader_parameter("color", color_array[2])
 	left = get_node("FOV/left")
@@ -46,6 +53,7 @@ func _ready():
 	Global.actual_dimension = Global.dimension_list[Global.actual_color]
 	if (Global.actual_dimension):
 		Global.actual_dimension.visible = true
+		
 
 func run():
 	if Input.is_action_pressed("Run"):
@@ -67,7 +75,7 @@ func run():
 func change_lantern():
 	if (!shader):
 		return
-	if (Input.is_action_just_pressed("Interact")):
+	if (Input.is_action_just_pressed("Swap_dimension")):
 		if (Global.actual_dimension):
 			Global.actual_dimension.visible = false
 		Global.actual_color += 1
@@ -83,7 +91,7 @@ func change_lantern():
 
 var light_Speed = 0.02
 
-#0.78539800643921
+# 0.78539800643921
 #-0.78539800643921
 func atack():
 	if Input.is_action_pressed("Fire") && can_shot:
@@ -122,7 +130,9 @@ func control_atack():
 				mana = max_mana
 	#if (Input.is_action_just_pressed("Fire")):
 		#can_shot = true
-	if (!can_shot && mana == max_mana):
+	#if (!can_shot && mana == max_mana): # sobrecarga
+	
+	if (!can_shot && mana > max_mana / 10): # Menos sobrecarga
 		can_shot = true
 	pass
 

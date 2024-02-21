@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d754k7ft5tvl"]
+
+[ext_resource type="Texture2D" uid="uid://j00ciy5j36ps" path="res://Sprites/cenario/itens/mesa com computador.png" id="1_qcr2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psbll"]
+size = Vector2(65.5, 209.248)
+
+[node name="mesa_em_L" type="StaticBody2D"]
+use_parent_material = true
+position = Vector2(167, 101)
+
+[node name="mesa_em_L" type="Sprite2D" parent="."]
+self_modulate = Color(0.396078, 0.396078, 0.396078, 1)
+use_parent_material = true
+scale = Vector2(3, 3)
+texture = ExtResource("1_qcr2c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-113.75, -0.25)
+shape = SubResource("RectangleShape2D_psbll")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(33.3741, -67.9997)
+rotation = -1.57055
+shape = SubResource("RectangleShape2D_psbll")
+debug_color = Color(1, 1, 1, 0.419608)

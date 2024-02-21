@@ -1,18 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://cdsh7jjgg0ctc"]
+[gd_scene load_steps=24 format=3 uid="uid://cdsh7jjgg0ctc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
 [ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
 [ext_resource type="AudioStream" uid="uid://c2u7gdos8441w" path="res://Sound Effects/andando.mp3" id="2_fbw2c"]
 [ext_resource type="AudioStream" uid="uid://cnhelj34yt740" path="res://Sound Effects/90710__ledhed2222__laser_sustained.mp3" id="2_t2qqb"]
 [ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="3_nq1ja"]
-[ext_resource type="Texture2D" uid="uid://dahpnydsdfc21" path="res://Sprites/player_base.png" id="4_4xe3e"]
 [ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="5_3w08x"]
+[ext_resource type="Script" path="res://Scripts/player/small_l.gd" id="6_bu0yn"]
 [ext_resource type="PackedScene" uid="uid://nplu4kvmx5q3" path="res://Scenes/color_shader.tscn" id="6_kwi33"]
 [ext_resource type="PackedScene" uid="uid://ytsj7423nsd2" path="res://Scenes/movie_shader.tscn" id="9_7r44p"]
 [ext_resource type="VideoStream" path="res://old-film-grain-overlay-Video-Audio-footage-HD-Free.ogv" id="9_f3nq1"]
 [ext_resource type="Shader" path="res://Shaders/ray.gdshader" id="10_gs3h3"]
 [ext_resource type="Script" path="res://Scripts/VideoStreamPlayer.gd" id="10_tkxf8"]
 [ext_resource type="Texture2D" uid="uid://ccvdd4n2prlgn" path="res://Sprites/Player/player andando.png" id="13_ahsgv"]
+[ext_resource type="PackedScene" uid="uid://bw3ujn6j2u8bf" path="res://Scenes/black_shader.tscn" id="14_2dab1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
 radius = 25.0
@@ -57,12 +58,13 @@ shader_parameter/noise_scale = Vector2(15, 1)
 blend_mode = 2
 light_mode = 2
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["playable"]]
 position = Vector2(-828, 138)
 script = ExtResource("1_ngwv3")
 
 [node name="steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fbw2c")
+volume_db = -15.0
 
 [node name="laser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_t2qqb")
@@ -170,6 +172,7 @@ shadow_enabled = true
 texture = ExtResource("2_b748r")
 offset = Vector2(10, 0)
 texture_scale = 0.15
+script = ExtResource("6_bu0yn")
 
 [node name="small_l2" type="PointLight2D" parent="FOV"]
 position = Vector2(-10, 0)
@@ -205,54 +208,13 @@ occluder_light_mask = 8
 occluder = SubResource("OccluderPolygon2D_67hjq")
 occluder_light_mask = 8
 
-[node name="FOV2" type="Node2D" parent="."]
-visible = false
-
-[node name="small_l" type="PointLight2D" parent="FOV2"]
-position = Vector2(-10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("2_b748r")
-offset = Vector2(10, 0)
-texture_scale = 0.15
-
-[node name="small_l2" type="PointLight2D" parent="FOV2"]
-position = Vector2(-10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("3_nq1ja")
-offset = Vector2(10, 0)
-texture_scale = 1.5
-
-[node name="big_l" type="PointLight2D" parent="FOV2"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(34, 0)
-blend_mode = 2
-shadow_enabled = true
-shadow_item_cull_mask = 9
-texture = ExtResource("2_b748r")
-texture_scale = 3.0
-
-[node name="left" type="LightOccluder2D" parent="FOV2"]
-position = Vector2(0, -5)
-rotation = -0.785398
-occluder = SubResource("OccluderPolygon2D_ipuyi")
-occluder_light_mask = 8
-
-[node name="right" type="LightOccluder2D" parent="FOV2"]
-position = Vector2(0, 5)
-rotation = 0.785398
-occluder = SubResource("OccluderPolygon2D_ipuyi")
-occluder_light_mask = 8
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="FOV2"]
-occluder = SubResource("OccluderPolygon2D_67hjq")
-occluder_light_mask = 8
+[node name="Black_Shader" parent="." instance=ExtResource("14_2dab1")]
+position = Vector2(-8.5, -3.50002)
+scale = Vector2(115.688, 53.85)
 
 [node name="Color_Shader" parent="." instance=ExtResource("6_kwi33")]
-visible = false
-position = Vector2(-40.5, -34)
+position = Vector2(4.74794, 0.499989)
+scale = Vector2(119.531, 54.25)
 
 [node name="movie_shader" parent="." instance=ExtResource("9_7r44p")]
 visible = false
@@ -284,7 +246,7 @@ script = ExtResource("10_tkxf8")
 
 [node name="ray_shader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bnao7")
-position = Vector2(1050, 0)
+position = Vector2(1042, 0)
 scale = Vector2(121.75, 16.7)
 texture = ExtResource("5_3w08x")
 
@@ -293,13 +255,7 @@ visible = false
 
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 
-[node name="PlayerBase" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(50, 0)
-rotation = 1.5708
-texture = ExtResource("4_4xe3e")
-
-[node name="PlayerAndando" type="Sprite2D" parent="."]
+[node name="Player" type="Sprite2D" parent="."]
 position = Vector2(22, 10)
 rotation = -1.5708
 scale = Vector2(3, 3)
