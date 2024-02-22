@@ -18,7 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_r6kwv")
 _name = NodePath("CanvasLayer/Name")
 _dialog = NodePath("CanvasLayer/DialogBox/HBoxContainer/VBoxContainer/Dialog")
-_faceset = NodePath("Ibagens")
+_faceset = NodePath("CanvasLayer/Ibagens")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -70,12 +70,11 @@ theme_override_font_sizes/normal_font_size = 40
 text = "Texto
 "
 
-[node name="Ibagens" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -46.0
-offset_top = -2.0
-offset_right = 519.0
-offset_bottom = 1074.0
+[node name="Ibagens" type="TextureRect" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 144.0
+offset_right = 600.0
+offset_bottom = 1220.0
 texture = ExtResource("3_qknbv")
 expand_mode = 1
 stretch_mode = 5

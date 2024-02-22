@@ -1,5 +1,7 @@
 extends Label
 
+@export var icon: Sprite2D = null
+
 var increasing: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,6 +10,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (Global.player_warning_text == ""):
+		if icon:
+			icon.visible = false
+	else:
+		if icon:
+			icon.visible = true
 	self.text = Global.player_warning_text
 	if (increasing):
 		modulate.a += 0.03

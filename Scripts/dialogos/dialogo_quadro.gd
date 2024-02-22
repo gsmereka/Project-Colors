@@ -22,49 +22,22 @@ func _process(delta):
 
 
 const _DIALOG_SCREEN: PackedScene = preload("res://Scenes/User Interface/dialog_screen.tscn")
-#var _dialog_data: Dictionary = {
-	#0: {
-		#"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
-		#"dialog": "Que lindo quadro",
-		#"title": "Caveira"
-	#},
-	#1: {
-		#"faceset": "res://Sprites/Dialogo/ham/ham1.png",
-		#"dialog": "Não sabia que você gostava de arte",
-		#"title": "Ham"
-	#},
-	#2: {
-		#"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
-		#"dialog": "Eu já posei para o leonardo da vinci diversas vezes",
-		#"title": "Caveira"
-	#}
-#}
 
 var _dialog_data: Dictionary = {
 	0: {
-		"faceset":"res://Sprites/light.png",
-		"dialog": "Olá senhores, bem vindos a mansão, vocês são hospedes novos ou já tem cadastro?",
-		"title": "??????"
+		"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
+		"dialog": "Que lindo quadro",
+		"title": "Caveira"
 	},
 	1: {
 		"faceset": "res://Sprites/Dialogo/ham/ham1.png",
-		"dialog": "Ham? Você seria quem?",
+		"dialog": "Não sabia que você gostava de arte",
 		"title": "Ham"
 	},
 	2: {
-		"faceset": "res://Sprites/light.png",
-		"dialog": "Sou seu recepcionista, então voltando ao nosso atendimento...",
-		"title": "Recepcionista"
-	},
-	3: {
-		"faceset": "res://Sprites/Dialogo/Caveira/cav4.png",
-		"dialog": "Você tá morto meu chapa!",
+		"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
+		"dialog": "Eu já posei para o leonardo da vinci diversas vezes",
 		"title": "Caveira"
-	},
-	4: {
-		"faceset": "res://Sprites/light.png",
-		"dialog": "Não gostei do seu tom, cavalheiro, estarei informando a gerência sobre o ocorrido.",
-		"title": "Recepcionista"
 	}
 }
 

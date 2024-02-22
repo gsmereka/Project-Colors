@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b468n3bfs62w3"]
 
-[ext_resource type="Texture2D" uid="uid://cfmkgvqivbvg5" path="res://Sprites/cenario/itens/mesa com copos em cima.png" id="1_p3i3p"]
+[ext_resource type="Texture2D" uid="uid://bnht8sojosbqv" path="res://Sprites/cenario/itens/mesa com teias.png" id="1_jy63p"]
 [ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_gi7kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_en5kl"]
@@ -13,9 +13,10 @@ rotation = 1.35952
 
 [node name="Mesa1" type="Sprite2D" parent="."]
 use_parent_material = true
-position = Vector2(-0.167179, -0.985926)
-scale = Vector2(2, 2.082)
-texture = ExtResource("1_p3i3p")
+position = Vector2(-5.57597, 3.92712)
+rotation = -1.57126
+scale = Vector2(1.4826, 3.86224)
+texture = ExtResource("1_jy63p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.90002, 3.60718)
@@ -24,4 +25,11 @@ scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_en5kl")
 debug_color = Color(1, 1, 1, 0.419608)
 script = ExtResource("2_gi7kr")
-dimension = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+use_parent_material = true
+offset_left = -48.0
+offset_top = -232.0
+offset_right = 45.0
+offset_bottom = -125.0
+color = Color(0.372549, 0.227451, 0.109804, 1)
