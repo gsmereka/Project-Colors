@@ -14,7 +14,8 @@ var	stamina_decrease: float = 0.0
 var stamina_increase: float = 20
 var mana: float = 0
 var max_mana: float = 2000
-var	mana_decrease: float = 20.0
+#var	mana_decrease: float = 20.0
+var	mana_decrease: float = 0.0
 var mana_increase: float = 20
 var color_array: Array = [Color(1,0,0,1), Color(0,0,1,1), Color(1,1,0,1)]
 #var color_selected: int = 1
@@ -96,7 +97,7 @@ func atack():
 		if (right.rotation <= 0):
 			right.rotation = 0
 			ray.visible = true
-			shader.material.set_shader_parameter("color", Color(1,1,1,1))
+			#shader.material.set_shader_parameter("color", Color(1,1,1,1))
 		left.rotation += light_Speed
 		if (left.rotation >= 0):
 			left.rotation = 0
@@ -145,13 +146,16 @@ func steps_sound():
 	pass
 
 func _gotomenu():
-	#Global.dimension_list = []
+	Global.dimension_list = []
+	get_tree().change_scene_to_file("res://Scenes/primeira_casa.tscn")
 	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	pass
 
 func _plalyer_die():
-	if (Input.is_action_just_pressed("Fire")):
+	if (hp <= 0):
 		_gotomenu()
+	#if (Input.is_action_just_pressed("Fire")):
+		#_gotomenu()
 	pass
 
 func _physics_process(delta):

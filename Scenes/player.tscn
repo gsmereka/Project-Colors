@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdsh7jjgg0ctc"]
+[gd_scene load_steps=31 format=3 uid="uid://cdsh7jjgg0ctc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
 [ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://lmgytwrhy6q2" path="res://Sprites/cenario/itens/caveira.png" id="16_u17mj"]
 [ext_resource type="Texture2D" uid="uid://dxfexmfast14l" path="res://Sprites/cenario/chave vermelha.png" id="17_stn7l"]
 [ext_resource type="Script" path="res://Scripts/player/KeyRect.gd" id="18_20tt4"]
+[ext_resource type="Script" path="res://Scripts/player/ray.gd" id="18_ieka3"]
+[ext_resource type="Script" path="res://Scripts/player/player_hp.gd" id="18_x1ukb"]
+[ext_resource type="Texture2D" uid="uid://t2nnvljfg8bo" path="res://Sprites/coracão.png" id="19_a713n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
 radius = 25.0
@@ -62,6 +65,10 @@ light_mode = 2
 font_size = 32
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qgy8h"]
+closed = false
+polygon = PackedVector2Array(0, -6, 0, 6)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shader", "player_sprite", "left", "right", "ray", "laser_sound", "steps") groups=["playable"]]
 position = Vector2(960, 540)
@@ -178,11 +185,6 @@ expand = true
 loop = true
 script = ExtResource("10_tkxf8")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-
-[node name="Line2D" type="Line2D" parent="RayCast2D"]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_irwnb")
 
@@ -238,3 +240,58 @@ offset_bottom = 954.0
 scale = Vector2(8, 8)
 texture = ExtResource("17_stn7l")
 script = ExtResource("18_20tt4")
+
+[node name="player_hp" type="Control" parent="player_hud" node_paths=PackedStringArray("hp1", "hp2", "hp3")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_x1ukb")
+hp1 = NodePath("hearth_1")
+hp2 = NodePath("hearth_2")
+hp3 = NodePath("hearth_3")
+
+[node name="hearth_1" type="TextureRect" parent="player_hud/player_hp"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 79.0
+offset_right = 70.0
+offset_bottom = 119.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_a713n")
+
+[node name="hearth_2" type="TextureRect" parent="player_hud/player_hp"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 79.0
+offset_right = 170.0
+offset_bottom = 119.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_a713n")
+
+[node name="hearth_3" type="TextureRect" parent="player_hud/player_hp"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 79.0
+offset_right = 270.0
+offset_bottom = 119.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_a713n")
+
+[node name="RayCast2D" type="RayCast2D" parent="." node_paths=PackedStringArray("sparkle", "occluder", "limit")]
+position = Vector2(80, 0)
+target_position = Vector2(883, 0)
+collision_mask = 32
+hit_from_inside = true
+script = ExtResource("18_ieka3")
+sparkle = NodePath("Light")
+occluder = NodePath("../FOV/right")
+limit = NodePath("LightOccluder2D")
+
+[node name="Light" type="Sprite2D" parent="RayCast2D"]
+self_modulate = Color(1, 0, 0, 0.898039)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_nq1ja")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="RayCast2D"]
+occluder = SubResource("OccluderPolygon2D_qgy8h")

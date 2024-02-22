@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsgijncxr10ff"]
+
+[ext_resource type="Script" path="res://Scripts/fantasmas/yellow_ghost.gd" id="1_xsxtj"]
+[ext_resource type="Texture2D" uid="uid://b27u5lfqkksye" path="res://Sprites/fantasmas/euforia idel.png" id="2_hj253"]
+[ext_resource type="PackedScene" uid="uid://ket2rsqfn16r" path="res://Scenes/fantasmas/decoy.tscn" id="3_b20t4"]
+[ext_resource type="Texture2D" uid="uid://ntcarefbmx87" path="res://Sprites/fantasmas/euforia atack.png" id="3_x3cr6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plxg3"]
+radius = 30.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stco1"]
+atlas = ExtResource("2_hj253")
+region = Rect2(0, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s8jg"]
+atlas = ExtResource("2_hj253")
+region = Rect2(47, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t7p8"]
+atlas = ExtResource("2_hj253")
+region = Rect2(94, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycqxp"]
+atlas = ExtResource("3_x3cr6")
+region = Rect2(0, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ho2"]
+atlas = ExtResource("3_x3cr6")
+region = Rect2(47, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im385"]
+atlas = ExtResource("3_x3cr6")
+region = Rect2(94, 0, 47, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7f0vi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stco1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s8jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t7p8")
+}],
+"loop": true,
+"name": &"yellow_animate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycqxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1ho2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im385")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycqxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1ho2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im385")
+}],
+"loop": false,
+"name": &"yellow_attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g13v4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kp10"]
+radius = 12.0185
+
+[node name="yellow_ghost" type="CharacterBody2D" groups=["killable"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_xsxtj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_plxg3")
+
+[node name="object_detector" type="RayCast2D" parent="."]
+visible = false
+rotation = -1.5708
+target_position = Vector2(0.999602, 110)
+
+[node name="ghost_animated" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6.66667, 4.66667)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_7f0vi")
+animation = &"yellow_attack"
+
+[node name="hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_g13v4")
+debug_color = Color(1, 0, 0.121569, 0.419608)
+
+[node name="attack" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+shape = SubResource("CircleShape2D_4kp10")
+debug_color = Color(0, 0.627451, 0.498039, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
+[node name="decoy" parent="." instance=ExtResource("3_b20t4")]
+position = Vector2(31.3333, 18.6667)
+
+[connection signal="animation_finished" from="ghost_animated" to="." method="_on_ghost_animated_animation_finished"]
+[connection signal="body_shape_entered" from="hitbox" to="." method="_on_hitbox_body_shape_entered"]
+[connection signal="body_shape_entered" from="attack" to="." method="_on_attack_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
