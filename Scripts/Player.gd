@@ -9,7 +9,6 @@ var run_speed: float = 400
 var walk_speed: float = 200
 var stamina: float = 0
 var max_stamina: float = 2000
-#var	stamina_decrease: float = 10
 var	stamina_decrease: float = 0.0
 var stamina_increase: float = 20
 var mana: float = 0
@@ -18,21 +17,25 @@ var	mana_decrease: float = 20.0
 var mana_increase: float = 20
 var color_array: Array = [Color(1,0,0,1), Color(0,0,1,1), Color(1,1,0,1)]
 #var color_selected: int = 1
-var laser_sound
-var steps
+
 var low_steps = preload("res://Sound Effects/andando.mp3")
 var run_steps = preload("res://Sound Effects/correndo.mp3")
-var ray
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var left
-var right
+
+
 var	angle = 0
 var	can_shot: bool = true
-var shader
-var player_sprite
+
+# Nodes do player
+@export var shader: Sprite2D = null
+@export var player_sprite: Sprite2D = null
+@export var left: LightOccluder2D = null
+@export var right: LightOccluder2D = null
+@export var ray: Sprite2D = null
+@export var laser_sound: AudioStreamPlayer = null
+@export var steps: AudioStreamPlayer = null
 
 func _ready():
+	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	Global.player_node = self
 	if (self.visible == false):
 		self.visible = true
@@ -42,15 +45,8 @@ func _ready():
 	Global.dimension_list[0].visible = false
 	Global.dimension_list[1].visible = false
 	Global.dimension_list[2].visible = false
-	shader = get_node("Color_Shader")
 	if shader:
 		shader.material.set_shader_parameter("color", color_array[2])
-	left = get_node("FOV/left")
-	right = get_node("FOV/right")
-	laser_sound = get_node("laser")
-	steps = get_node("steps")
-	ray = get_node("ray_shader")
-	player_sprite = get_node("Player")
 	init_step_time = Time.get_ticks_msec()
 	Global.actual_color = 1
 	Global.actual_dimension = Global.dimension_list[Global.actual_color]

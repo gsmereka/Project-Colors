@@ -65,11 +65,18 @@ font_size = 32
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["playable"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shader", "player_sprite", "left", "right", "ray", "laser_sound", "steps") groups=["playable"]]
 position = Vector2(960, 540)
 script = ExtResource("1_ngwv3")
 steps_frame_speed_walking = 500
 steps_frame_speed_running = 200
+shader = NodePath("Color_Shader")
+player_sprite = NodePath("Player")
+left = NodePath("FOV/left")
+right = NodePath("FOV/right")
+ray = NodePath("ray_shader")
+laser_sound = NodePath("laser")
+steps = NodePath("steps")
 
 [node name="steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fbw2c")

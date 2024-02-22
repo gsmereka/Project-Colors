@@ -311,6 +311,12 @@ rotation = 1.5708
 position = Vector2(-793, 2699)
 rotation = 2.14245
 
+[node name="Sala 4" type="Node2D" parent="dimensions/normal_dimension"]
+
+[node name="baú4" parent="dimensions/normal_dimension/Sala 4" instance=ExtResource("4_gdwu6")]
+position = Vector2(-2714, -1618)
+rotation = -0.000201216
+
 [node name="Sala 5" type="Node2D" parent="dimensions/normal_dimension"]
 
 [node name="pilastras" type="Node2D" parent="dimensions/normal_dimension/Sala 5"]
@@ -1219,7 +1225,6 @@ rotation = 1.5872
 [node name="mesa_grande3" parent="dimensions/red_dimension/mapa_3/labirinto" instance=ExtResource("13_g11we")]
 position = Vector2(-578, 1921)
 rotation = 3.01476
-scale = Vector2(1, 1)
 
 [node name="mesa_grande4" parent="dimensions/red_dimension/mapa_3/labirinto" instance=ExtResource("13_g11we")]
 position = Vector2(-734, 1402)
@@ -1462,6 +1467,9 @@ rotation = 0.365909
 [node name="mapa_5" type="Node2D" parent="dimensions/red_dimension"]
 use_parent_material = true
 
+[node name="labirinto" type="Node2D" parent="dimensions/red_dimension/mapa_5"]
+use_parent_material = true
+
 [node name="yellow_dimension" type="Node2D" parent="dimensions"]
 modulate = Color(1, 1, 0, 1)
 clip_children = 1
@@ -1673,9 +1681,12 @@ rotation = 1.57086
 [node name="mapa_5" type="Node2D" parent="dimensions/yellow_dimension"]
 use_parent_material = true
 
+[node name="labirinto" type="Node2D" parent="dimensions/yellow_dimension/mapa_5"]
+use_parent_material = true
+
 [node name="Player" parent="." instance=ExtResource("6_brblj")]
 visible = false
-position = Vector2(-1300, -1686)
+position = Vector2(1317, -992)
 keys = 0
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -1698,6 +1709,7 @@ scale = Vector2(228.875, 117.15)
 texture = ExtResource("10_1lx05")
 
 [node name="2-4" type="Sprite2D" parent="Top_Textures"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-2813, -52.25)
 scale = Vector2(16.125, 2.025)
@@ -1723,8 +1735,14 @@ texture = ExtResource("10_1lx05")
 
 [node name="5-6a" type="Sprite2D" parent="Top_Textures"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(626, -506)
-scale = Vector2(10.5, 16.7)
+position = Vector2(253.5, -505)
+scale = Vector2(215.438, 16.7)
+texture = ExtResource("10_1lx05")
+
+[node name="5-6a2" type="Sprite2D" parent="Top_Textures"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(253.5, -505)
+scale = Vector2(215.438, 16.7)
 texture = ExtResource("10_1lx05")
 
 [node name="5-6c" type="Sprite2D" parent="Top_Textures"]
@@ -1734,6 +1752,7 @@ scale = Vector2(11.375, 12.2)
 texture = ExtResource("10_1lx05")
 
 [node name="colisions" type="Node2D" parent="."]
+visible = false
 
 [node name="mapa_1" type="StaticBody2D" parent="colisions"]
 position = Vector2(-3583, 2846)
