@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@export var keys: int = 1
+@export var keys: int = 0
 @export var steps_frame_speed_walking: int = 400
 @export var steps_frame_speed_running: int = 150
 const SPEED = 300.0
+@export var hp: int = 3
 var speed: float
 var run_speed: float = 400
 var walk_speed: float = 200
@@ -21,7 +22,7 @@ var color_array: Array = [Color(1,0,0,1), Color(0,0,1,1), Color(1,1,0,1)]
 var low_steps = preload("res://Sound Effects/andando.mp3")
 var run_steps = preload("res://Sound Effects/correndo.mp3")
 
-
+var light_Speed = 0.02
 var	angle = 0
 var	can_shot: bool = true
 
@@ -35,24 +36,17 @@ var	can_shot: bool = true
 @export var steps: AudioStreamPlayer = null
 
 func _ready():
-	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	Global.player_node = self
 	if (self.visible == false):
 		self.visible = true
-	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("red_dimension"))
-	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("blue_dimension"))
-	Global.dimension_list.append(get_parent().get_node("dimensions").get_node("yellow_dimension"))
-	Global.dimension_list[0].visible = false
-	Global.dimension_list[1].visible = false
-	Global.dimension_list[2].visible = false
-	if shader:
-		shader.material.set_shader_parameter("color", color_array[2])
+	if (Global.checkpoint_position):
+		self.position = Global.checkpoint_position
+	keys = Global.player_keys
 	init_step_time = Time.get_ticks_msec()
-	Global.actual_color = 1
-	Global.actual_dimension = Global.dimension_list[Global.actual_color]
-	if (Global.actual_dimension):
-		Global.actual_dimension.visible = true
 		
+
+func prepare_dimension():
+	shader.material.set_shader_parameter("color", color_array[2])
 
 func run():
 	if Input.is_action_pressed("Run"):
@@ -91,7 +85,6 @@ func change_lantern():
 		#Global.color_shader
 	pass
 
-var light_Speed = 0.02
 
 # 0.78539800643921
 #-0.78539800643921
@@ -151,8 +144,19 @@ func steps_sound():
 			steps.stop()
 	pass
 
+func _gotomenu():
+	#Global.dimension_list = []
+	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
+	pass
+
+func _plalyer_die():
+	if (Input.is_action_just_pressed("Fire")):
+		_gotomenu()
+	pass
+
 func _physics_process(delta):
 	velocity = run()
+	_plalyer_die()
 	steps_sound()
 	animate_steps()
 	atack()
@@ -160,6 +164,7 @@ func _physics_process(delta):
 	change_lantern()
 	look_at(get_global_mouse_position())
 	move_and_slide()
+	Global.player_keys = keys
 
 var frame_direction: int = 1
 var step_limit = steps_frame_speed_walking

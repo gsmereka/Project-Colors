@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3nltccdmwtit"]
+[gd_scene load_steps=5 format=3 uid="uid://c3nltccdmwtit"]
 
+[ext_resource type="Script" path="res://Scenes/items/baú.gd" id="1_k6bfu"]
 [ext_resource type="Texture2D" uid="uid://cbjo32npr47d8" path="res://Sprites/cenario/bau.png" id="1_y3kfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_en5kl"]
 size = Vector2(83.4711, 64.566)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rjjw"]
+radius = 72.4016
+
 [node name="baú" type="StaticBody2D"]
 position = Vector2(623, 626)
 rotation = 1.35952
+script = ExtResource("1_k6bfu")
 
-[node name="baú" type="Sprite2D" parent="."]
+[node name="bau" type="Sprite2D" parent="."]
 position = Vector2(-0.167179, -0.985926)
 scale = Vector2(3.26667, 3.40123)
 texture = ExtResource("1_y3kfb")
@@ -19,3 +24,12 @@ position = Vector2(-0.00579834, -3.14377)
 rotation = -0.00192806
 shape = SubResource("RectangleShape2D_en5kl")
 debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0rjjw")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

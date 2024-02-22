@@ -1,9 +1,12 @@
 extends StaticBody2D
 
+@export var id: int = 0
 var player_inside: bool = false
 var player = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if (!Global.doors[id]):
+		queue_free()
 	pass # Replace with function body.
 
 
@@ -14,6 +17,7 @@ func _process(delta):
 			return
 		if (Input.is_action_just_pressed("Interact")):
 			player.keys -= 1
+			Global.doors[id] = 0
 			queue_free()
 	pass
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=82 format=3 uid="uid://b77oq2qdlpkfj"]
+[gd_scene load_steps=84 format=3 uid="uid://b77oq2qdlpkfj"]
 
+[ext_resource type="Script" path="res://Scripts/dimensions.gd" id="1_2pgrn"]
 [ext_resource type="PackedScene" uid="uid://d754k7ft5tvl" path="res://Scenes/items/mesa_em_L.tscn" id="2_komv2"]
 [ext_resource type="AudioStream" uid="uid://bjth4wkjiij4k" path="res://Musics/music_menu.mp3" id="3_a56ka"]
 [ext_resource type="PackedScene" uid="uid://b2e75urddejtu" path="res://Scenes/Dialogos/dialogo_recepcionista.tscn" id="3_vp8ih"]
@@ -19,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ck03pxbukci3r" path="res://Scenes/items/poltrona.tscn" id="14_t470l"]
 [ext_resource type="PackedScene" uid="uid://cuah10lsybqrp" path="res://Scenes/items/barril_pequeno.tscn" id="14_w726r"]
 [ext_resource type="PackedScene" uid="uid://bqgi5pdjvhf53" path="res://Scenes/items/porta_trancada.tscn" id="17_fhv75"]
+[ext_resource type="PackedScene" uid="uid://byk157eft6i5w" path="res://Scenes/checkpoint.tscn" id="21_hxft1"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u3nmk"]
 closed = false
@@ -231,6 +233,7 @@ polygon = PackedVector2Array(539, -262, 540, -98)
 [node name="Primeira casa" type="Node2D"]
 
 [node name="dimensions" type="Node2D" parent="."]
+script = ExtResource("1_2pgrn")
 
 [node name="normal_dimension" type="Node2D" parent="dimensions"]
 
@@ -261,17 +264,6 @@ position = Vector2(0, -1)
 occluder = SubResource("OccluderPolygon2D_u3nmk")
 occluder_light_mask = 3
 
-[node name="dialogos" type="Node2D" parent="dimensions/normal_dimension/Sala 1"]
-
-[node name="dialogo_quadro" parent="dimensions/normal_dimension/Sala 1/dialogos" instance=ExtResource("3_yr4eq")]
-
-[node name="dialogo_recepcionista" parent="dimensions/normal_dimension/Sala 1/dialogos" instance=ExtResource("3_vp8ih")]
-position = Vector2(-433, 1195)
-
-[node name="dialogo_gerencia" parent="dimensions/normal_dimension/Sala 1/dialogos" instance=ExtResource("5_jqxod")]
-position = Vector2(-238, 324)
-rotation = 0.119781
-
 [node name="Key" parent="dimensions/normal_dimension/Sala 1" instance=ExtResource("5_mamem")]
 position = Vector2(-2155, 1803)
 rotation = 0.69115
@@ -281,6 +273,7 @@ position = Vector2(-3294, 272)
 
 [node name="porta_trancada" parent="dimensions/normal_dimension/Sala 2" instance=ExtResource("17_fhv75")]
 position = Vector2(515, -228)
+id = 1
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="dimensions/normal_dimension/Sala 2/porta_trancada"]
 position = Vector2(-6, 2)
@@ -302,20 +295,24 @@ rotation = 1.5708
 [node name="baú2" parent="dimensions/normal_dimension/Sala 3" instance=ExtResource("4_gdwu6")]
 position = Vector2(-488, 2255)
 rotation = 1.5708
+id = 1
 
 [node name="baú3" parent="dimensions/normal_dimension/Sala 3" instance=ExtResource("4_gdwu6")]
 position = Vector2(-488, 2486)
 rotation = 1.5708
+id = 2
 
 [node name="Key" parent="dimensions/normal_dimension/Sala 3" instance=ExtResource("5_mamem")]
 position = Vector2(-793, 2699)
 rotation = 2.14245
+id = 1
 
 [node name="Sala 4" type="Node2D" parent="dimensions/normal_dimension"]
 
 [node name="baú4" parent="dimensions/normal_dimension/Sala 4" instance=ExtResource("4_gdwu6")]
 position = Vector2(-2714, -1618)
 rotation = -0.000201216
+id = 3
 
 [node name="Sala 5" type="Node2D" parent="dimensions/normal_dimension"]
 
@@ -345,7 +342,13 @@ position = Vector2(680, -1800)
 [node name="Pilastra Quadrada14" parent="dimensions/normal_dimension/Sala 5/pilastras" instance=ExtResource("7_3jla5")]
 position = Vector2(680, -1000)
 
+[node name="baú5" parent="dimensions/normal_dimension/Sala 5" instance=ExtResource("4_gdwu6")]
+position = Vector2(896, -1373)
+rotation = 1.56044
+id = 4
+
 [node name="blue_dimension" type="Node2D" parent="dimensions"]
+visible = false
 modulate = Color(0, 0, 1, 1)
 clip_children = 1
 material = SubResource("CanvasItemMaterial_ljbym")
@@ -747,6 +750,7 @@ rotation = -0.35842
 use_parent_material = true
 
 [node name="red_dimension" type="Node2D" parent="dimensions"]
+visible = false
 modulate = Color(1, 0, 0, 1)
 clip_children = 1
 material = SubResource("CanvasItemMaterial_k8bet")
@@ -1471,6 +1475,7 @@ use_parent_material = true
 use_parent_material = true
 
 [node name="yellow_dimension" type="Node2D" parent="dimensions"]
+visible = false
 modulate = Color(1, 1, 0, 1)
 clip_children = 1
 material = SubResource("CanvasItemMaterial_0q2io")
@@ -1684,12 +1689,11 @@ use_parent_material = true
 [node name="labirinto" type="Node2D" parent="dimensions/yellow_dimension/mapa_5"]
 use_parent_material = true
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("6_brblj")]
 visible = false
-position = Vector2(1317, -992)
-keys = 0
-
-[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(-2351, 2270)
 
 [node name="Top_Textures" type="Node2D" parent="."]
 
@@ -1750,6 +1754,51 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(627, -218)
 scale = Vector2(11.375, 12.2)
 texture = ExtResource("10_1lx05")
+
+[node name="Dialogos" type="Node2D" parent="."]
+
+[node name="mapa_1" type="Node2D" parent="Dialogos"]
+modulate = Color(0.0470588, 0.921569, 0, 1)
+
+[node name="dialogo_quadro" parent="Dialogos/mapa_1" instance=ExtResource("3_yr4eq")]
+
+[node name="dialogo_recepcionista" parent="Dialogos/mapa_1" instance=ExtResource("3_vp8ih")]
+position = Vector2(-433, 1195)
+
+[node name="dialogo_gerencia" parent="Dialogos/mapa_1" instance=ExtResource("5_jqxod")]
+position = Vector2(-238, 324)
+rotation = 0.119781
+scale = Vector2(1, 1)
+
+[node name="mapa_2" type="Node2D" parent="Dialogos"]
+
+[node name="mapa_3" type="Node2D" parent="Dialogos"]
+
+[node name="mapa_4" type="Node2D" parent="Dialogos"]
+
+[node name="mapa_5" type="Node2D" parent="Dialogos"]
+
+[node name="mapa_6" type="Node2D" parent="Dialogos"]
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="mapa_1" parent="Checkpoints" instance=ExtResource("21_hxft1")]
+position = Vector2(-2897, 2864)
+
+[node name="mapa_2" parent="Checkpoints" instance=ExtResource("21_hxft1")]
+position = Vector2(-2796, 1230)
+
+[node name="mapa_3" parent="Checkpoints" instance=ExtResource("21_hxft1")]
+position = Vector2(-1824, 489)
+
+[node name="mapa_4" parent="Checkpoints" instance=ExtResource("21_hxft1")]
+position = Vector2(-2816, -191)
+
+[node name="mapa_5" parent="Checkpoints" instance=ExtResource("21_hxft1")]
+position = Vector2(-1296, -1631)
+
+[node name="mapa_6" parent="Checkpoints" instance=ExtResource("21_hxft1")]
+position = Vector2(632, -199)
 
 [node name="colisions" type="Node2D" parent="."]
 visible = false

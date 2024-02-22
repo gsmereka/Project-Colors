@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://qr0hq2a7356x"]
+[gd_scene load_steps=9 format=3 uid="uid://qr0hq2a7356x"]
 
 [ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="1_th02j"]
 [ext_resource type="PackedScene" uid="uid://cdsh7jjgg0ctc" path="res://Scenes/player.tscn" id="2_ayxw8"]
 [ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_okdkc"]
-[ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="2_p4fbu"]
+[ext_resource type="Script" path="res://Scripts/dimensions.gd" id="2_sarpt"]
 [ext_resource type="PackedScene" uid="uid://bw3ujn6j2u8bf" path="res://Scenes/black_shader.tscn" id="2_xc2aj"]
 [ext_resource type="PackedScene" uid="uid://nplu4kvmx5q3" path="res://Scenes/color_shader.tscn" id="3_e75ae"]
-[ext_resource type="Script" path="res://Scripts/dialogos/dialog_test.gd" id="7_o815x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdjwc"]
 size = Vector2(183.815, 210.429)
@@ -119,16 +118,12 @@ position = Vector2(484.463, -1.16494)
 shape = SubResource("RectangleShape2D_wdjwc")
 
 [node name="dimensions" type="Node2D" parent="."]
+script = ExtResource("2_sarpt")
 
 [node name="red_dimension" type="Node2D" parent="dimensions"]
 visible = false
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
-
-[node name="Light" type="Sprite2D" parent="dimensions/red_dimension"]
-use_parent_material = true
-position = Vector2(505, 473)
-texture = ExtResource("2_p4fbu")
 
 [node name="wall" type="Sprite2D" parent="dimensions/red_dimension"]
 visible = false
@@ -159,19 +154,9 @@ position = Vector2(1.48248, 0.983353)
 shape = SubResource("RectangleShape2D_wdjwc")
 script = ExtResource("2_okdkc")
 
-[node name="Light" type="Sprite2D" parent="dimensions/blue_dimension"]
-use_parent_material = true
-position = Vector2(588, 97)
-texture = ExtResource("2_p4fbu")
-
 [node name="yellow_dimension" type="Node2D" parent="dimensions"]
 clip_children = 1
 material = SubResource("CanvasItemMaterial_j2h6o")
-
-[node name="Light" type="Sprite2D" parent="dimensions/yellow_dimension"]
-use_parent_material = true
-position = Vector2(757, 357)
-texture = ExtResource("2_p4fbu")
 
 [node name="Back_Shader" parent="." instance=ExtResource("2_xc2aj")]
 
@@ -179,9 +164,3 @@ texture = ExtResource("2_p4fbu")
 
 [node name="Player" parent="." instance=ExtResource("2_ayxw8")]
 position = Vector2(32, 390)
-
-[node name="dialog" type="Node2D" parent="." node_paths=PackedStringArray("_hud")]
-script = ExtResource("7_o815x")
-_hud = NodePath("hud")
-
-[node name="hud" type="CanvasLayer" parent="dialog"]

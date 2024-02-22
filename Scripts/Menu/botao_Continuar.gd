@@ -10,5 +10,5 @@ func _ready():
 func _process(delta):
 	if (mouse_inside):
 		if (Input.is_action_just_pressed("Fire")):
-			print("continuaa")
+			get_tree().change_scene_to_file("res://Scenes/primeira_casa.tscn")
 	pass
