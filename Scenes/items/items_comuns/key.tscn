@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cued7ty3fva4x"]
+
+[ext_resource type="Script" path="res://Scripts/Items/Key.gd" id="1_hokkr"]
+[ext_resource type="Texture2D" uid="uid://dxfexmfast14l" path="res://Sprites/cenario/chave vermelha.png" id="2_d56jl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xstem"]
+light_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ynbp"]
+radius = 66.1211
+
+[node name="Key" type="Area2D"]
+material = SubResource("CanvasItemMaterial_xstem")
+script = ExtResource("1_hokkr")
+
+[node name="sprite" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(5, 5)
+texture = ExtResource("2_d56jl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2ynbp")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

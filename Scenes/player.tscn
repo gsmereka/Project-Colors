@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdsh7jjgg0ctc"]
+[gd_scene load_steps=26 format=3 uid="uid://cdsh7jjgg0ctc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
 [ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/VideoStreamPlayer.gd" id="10_tkxf8"]
 [ext_resource type="Texture2D" uid="uid://ccvdd4n2prlgn" path="res://Sprites/Player/player andando.png" id="13_ahsgv"]
 [ext_resource type="PackedScene" uid="uid://bw3ujn6j2u8bf" path="res://Scenes/black_shader.tscn" id="14_2dab1"]
+[ext_resource type="Script" path="res://Scripts/player/Avisos_pro_jogador.gd" id="15_wxl0i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
 radius = 25.0
@@ -58,9 +59,14 @@ shader_parameter/noise_scale = Vector2(15, 1)
 blend_mode = 2
 light_mode = 2
 
+[sub_resource type="LabelSettings" id="LabelSettings_8bduv"]
+font_size = 32
+
 [node name="Player" type="CharacterBody2D" groups=["playable"]]
-position = Vector2(-828, 138)
+position = Vector2(960, 540)
 script = ExtResource("1_ngwv3")
+steps_frame_speed_walking = 500
+steps_frame_speed_running = 200
 
 [node name="steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fbw2c")
@@ -291,3 +297,14 @@ shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = ExtResource("2_b748r")
 texture_scale = 2.0
+
+[node name="player_hud" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="player_hud"]
+offset_left = 1302.0
+offset_top = 8.0
+offset_right = 1903.0
+offset_bottom = 53.0
+text = "Caveira quer falar com você, aperte 'E'!"
+label_settings = SubResource("LabelSettings_8bduv")
+script = ExtResource("15_wxl0i")

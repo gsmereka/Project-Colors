@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://wumieulku1fw"]
+
+[ext_resource type="Texture2D" uid="uid://c26wmqavea7im" path="res://Sprites/cenario/itens/cadeira.png" id="1_cy5sq"]
+[ext_resource type="Script" path="res://Scripts/dimensional_wall.gd" id="2_xho3i"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3rqp3"]
+closed = false
+polygon = PackedVector2Array(66.2557, 100.833, 66.7488, -99.1692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lvcj"]
+size = Vector2(70.7823, 86.18)
+
+[node name="cadeira" type="StaticBody2D"]
+use_parent_material = true
+position = Vector2(-2404, 1829)
+rotation = -2.34189
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+use_parent_material = true
+occluder = SubResource("OccluderPolygon2D_3rqp3")
+occluder_light_mask = 0
+
+[node name="Armario" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(3, 3)
+texture = ExtResource("1_cy5sq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.00268269, -0.99971)
+shape = SubResource("RectangleShape2D_8lvcj")
+script = ExtResource("2_xho3i")

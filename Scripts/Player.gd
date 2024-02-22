@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@export var has_key: bool = false
-
+@export var keys: int = 1
+@export var steps_frame_speed_walking: int = 400
+@export var steps_frame_speed_running: int = 150
 const SPEED = 300.0
 var speed: float
 var run_speed: float = 400
@@ -29,9 +30,9 @@ var right
 var	angle = 0
 var	can_shot: bool = true
 var shader
+var player_sprite
 
 func _ready():
-	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	Global.player_node = self
 	if (self.visible == false):
 		self.visible = true
@@ -49,6 +50,8 @@ func _ready():
 	laser_sound = get_node("laser")
 	steps = get_node("steps")
 	ray = get_node("ray_shader")
+	player_sprite = get_node("Player")
+	init_step_time = Time.get_ticks_msec()
 	Global.actual_color = 1
 	Global.actual_dimension = Global.dimension_list[Global.actual_color]
 	if (Global.actual_dimension):
@@ -59,8 +62,10 @@ func run():
 	if Input.is_action_pressed("Run"):
 		if stamina > 0:
 			stamina -= stamina_decrease
+			step_limit = steps_frame_speed_running
 			speed = run_speed
 		else:
+			step_limit = steps_frame_speed_walking
 			speed = walk_speed
 	else:
 		if stamina < max_stamina:
@@ -68,6 +73,7 @@ func run():
 			if (stamina > max_stamina):
 				stamina = max_stamina
 		speed = walk_speed
+		step_limit = steps_frame_speed_walking
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	var velocity = input_direction * speed
 	return (velocity)
@@ -152,8 +158,30 @@ func steps_sound():
 func _physics_process(delta):
 	velocity = run()
 	steps_sound()
+	animate_steps()
 	atack()
 	control_atack()
 	change_lantern()
 	look_at(get_global_mouse_position())
 	move_and_slide()
+
+var frame_direction: int = 1
+var step_limit = steps_frame_speed_walking
+var init_step_time
+var step_time
+
+func animate_steps():
+		if velocity:
+			step_time = Time.get_ticks_msec()
+			if (step_time - init_step_time) < step_limit:
+				return
+			init_step_time = Time.get_ticks_msec()
+			player_sprite.frame += 1 * frame_direction
+			if (player_sprite.frame == 2):
+				frame_direction *= -1
+			if (player_sprite.frame == 1 && frame_direction == -1):
+				frame_direction *= -1
+		else:
+			player_sprite.frame = 0
+			frame_direction = 1
+		pass

@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvf0sht58me1l"]
+
+[ext_resource type="Script" path="res://Scripts/Dialogo/dialog_screen.gd" id="1_r6kwv"]
+[ext_resource type="Texture2D" uid="uid://byefnbojebsqp" path="res://Sprites/Dialogo/cxa_dialg.png" id="2_vcy7o"]
+[ext_resource type="Texture2D" uid="uid://btbngmjrfag4q" path="res://Sprites/Dialogo/Caveira/cav2.png" id="3_qknbv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_83846"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="DialogScreen" type="Control" node_paths=PackedStringArray("_name", "_dialog", "_faceset")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6kwv")
+_name = NodePath("CanvasLayer/Name")
+_dialog = NodePath("CanvasLayer/DialogBox/HBoxContainer/VBoxContainer/Dialog")
+_faceset = NodePath("Ibagens")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vcy7o")
+
+[node name="Name" type="Label" parent="CanvasLayer"]
+offset_left = 1344.0
+offset_top = 613.0
+offset_right = 1668.0
+offset_bottom = 680.0
+text = "Name:"
+label_settings = SubResource("LabelSettings_83846")
+horizontal_alignment = 1
+
+[node name="DialogBox" type="ColorRect" parent="CanvasLayer"]
+offset_left = 549.0
+offset_top = 749.0
+offset_right = 1610.0
+offset_bottom = 960.0
+color = Color(0, 0, 0, 0.0627451)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DialogBox"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 1053.0
+offset_bottom = 232.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DialogBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dialog" type="RichTextLabel" parent="CanvasLayer/DialogBox/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 40
+text = "Texto
+"
+
+[node name="Ibagens" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -46.0
+offset_top = -2.0
+offset_right = 519.0
+offset_bottom = 1074.0
+texture = ExtResource("3_qknbv")
+expand_mode = 1
+stretch_mode = 5
