@@ -521,61 +521,6 @@ rotation = 3.11371
 [node name="mapa_2" type="Node2D" parent="dimensions/blue_dimension"]
 use_parent_material = true
 
-[node name="circulo de poltronas" type="Node2D" parent="dimensions/blue_dimension/mapa_2"]
-use_parent_material = true
-
-[node name="poltrona_sala2_a2" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-3125, 861)
-rotation = -0.386426
-
-[node name="poltrona_sala2_a3" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-3162, 685)
-rotation = 0.00191948
-
-[node name="poltrona_sala2_a4" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-3118, 508)
-rotation = 0.475787
-
-[node name="poltrona_sala2_a5" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2994, 364)
-rotation = 0.967596
-
-[node name="poltrona_sala2_a6" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2820, 294)
-rotation = 1.44744
-
-[node name="poltrona_sala2_a7" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2620, 310)
-rotation = 1.89463
-
-[node name="poltrona_sala2_a8" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2463, 412)
-rotation = 2.33583
-
-[node name="poltrona_sala2_a9" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2365, 572)
-rotation = 2.84354
-
-[node name="poltrona_sala2_a10" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2353, 776)
-rotation = -2.94118
-
-[node name="poltrona_sala2_a12" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2454, 960)
-rotation = -2.41817
-
-[node name="poltrona_sala2_a13" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2611, 1070)
-rotation = -1.91017
-
-[node name="poltrona_sala2_a14" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-2853, 1091)
-rotation = -1.37415
-
-[node name="poltrona_sala2_a" parent="dimensions/blue_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
-position = Vector2(-3016, 1002)
-rotation = -0.827037
-
 [node name="mapa_3" type="Node2D" parent="dimensions/blue_dimension"]
 use_parent_material = true
 
@@ -1369,6 +1314,61 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_vp2fl")
 flip_h = true
 
+[node name="circulo de poltronas" type="Node2D" parent="dimensions/red_dimension/mapa_2"]
+use_parent_material = true
+
+[node name="poltrona_sala2_a2" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-3125, 861)
+rotation = -0.386426
+
+[node name="poltrona_sala2_a3" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-3162, 685)
+rotation = 0.00191948
+
+[node name="poltrona_sala2_a4" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-3118, 508)
+rotation = 0.475787
+
+[node name="poltrona_sala2_a5" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2994, 364)
+rotation = 0.967596
+
+[node name="poltrona_sala2_a6" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2820, 294)
+rotation = 1.44744
+
+[node name="poltrona_sala2_a7" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2620, 310)
+rotation = 1.89463
+
+[node name="poltrona_sala2_a8" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2463, 412)
+rotation = 2.33583
+
+[node name="poltrona_sala2_a9" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2365, 572)
+rotation = 2.84354
+
+[node name="poltrona_sala2_a10" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2353, 776)
+rotation = -2.94118
+
+[node name="poltrona_sala2_a12" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2454, 960)
+rotation = -2.41817
+
+[node name="poltrona_sala2_a13" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2611, 1070)
+rotation = -1.91017
+
+[node name="poltrona_sala2_a14" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-2853, 1091)
+rotation = -1.37415
+
+[node name="poltrona_sala2_a" parent="dimensions/red_dimension/mapa_2/circulo de poltronas" instance=ExtResource("14_t470l")]
+position = Vector2(-3016, 1002)
+rotation = -0.827037
+
 [node name="mapa_3" type="Node2D" parent="dimensions/red_dimension"]
 use_parent_material = true
 
@@ -1899,6 +1899,7 @@ position = Vector2(-2930, -1789)
 
 [node name="Player" parent="." instance=ExtResource("6_brblj")]
 process_priority = -1
+visible = false
 position = Vector2(-4985, 4650)
 
 [node name="lasers" type="Node2D" parent="."]
@@ -2027,6 +2028,7 @@ position = Vector2(16, -111)
 shape = SubResource("CircleShape2D_jue5e")
 
 [node name="phantoms_wall" type="Node2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="phantoms_wall"]
 position = Vector2(-834, 927)
@@ -2101,6 +2103,45 @@ rotation = 3.16286
 shape = SubResource("RectangleShape2D_qbv8u")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D2"]
+position = Vector2(-205, 1821)
+rotation = -1.64121
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="phantoms_wall"]
+position = Vector2(-2621, 3637)
+rotation = 0.0107607
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
+position = Vector2(-174, 647)
+rotation = 1.52733
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
+position = Vector2(-830, 1187)
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
+position = Vector2(-815, 78)
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
+position = Vector2(-195, -547)
+rotation = 1.56174
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
+position = Vector2(431, 63)
+rotation = 3.16286
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
+position = Vector2(426, 1157)
+rotation = 3.16286
+shape = SubResource("RectangleShape2D_qbv8u")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="phantoms_wall/StaticBody2D3"]
 position = Vector2(-205, 1821)
 rotation = -1.64121
 shape = SubResource("RectangleShape2D_qbv8u")

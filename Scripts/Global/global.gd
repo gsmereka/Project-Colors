@@ -24,8 +24,8 @@ var phantoms_killed: int = 0
 var block: TextureRect = null
 
 var saveData = Save.new()
-#var	save_path = "user://save.tres"
-var	save_path = "res://save.tres"
+var	save_path = "user://save.tres"
+#var	save_path = "res://save.tres"
 
 func save_game():
 	saveData.player_keys = player_keys

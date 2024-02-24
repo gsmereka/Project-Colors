@@ -40,6 +40,7 @@ var	can_shot: bool = true
 @export var hurt_sound: AudioStreamPlayer = null
 
 func _ready():
+	animação_morte.stop()
 	Global.player_node = self
 	if (self.visible == false):
 		self.visible = true
@@ -165,17 +166,17 @@ var die: bool = false
 @export var luz2: PointLight2D = null
 
 func _player_die():
-	if (hp <= 0):
+	if (animação_morte.frame == 8):
+		change_scene()
+	if (hp == 0):
 		player_sprite.visible = false
 		animação_morte.visible = true
 		bigluz.enabled = false
 		luz.enabled = false
 		luz2.enabled = false
 		if (!animação_morte.is_playing()):
-			animação_morte.frame = 0
+			#animação_morte.frame = 0
 			animação_morte.play()
-		if (animação_morte.frame == 7):
-			change_scene()
 		die = true
 	#if (Input.is_action_just_pressed("Fire")):
 		#change_scene()
