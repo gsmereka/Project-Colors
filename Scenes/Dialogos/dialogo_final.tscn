@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm5je86lyrqw6"]
+
+[ext_resource type="Script" path="res://Scripts/dialogos/dialogo_final.gd" id="1_y3a2e"]
+[ext_resource type="Script" path="res://Scripts/final_hud.gd" id="2_1onyt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x87nt"]
+radius = 183.003
+
+[node name="dialogo_final" type="Area2D" node_paths=PackedStringArray("_hud")]
+process_mode = 3
+position = Vector2(-1660, 829)
+script = ExtResource("1_y3a2e")
+_hud = NodePath("hud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1868, 1557)
+shape = SubResource("CircleShape2D_x87nt")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1660.0
+offset_top = -829.0
+offset_right = 3580.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="hud" type="CanvasLayer" parent="."]
+script = ExtResource("2_1onyt")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

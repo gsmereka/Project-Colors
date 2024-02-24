@@ -1,27 +1,63 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdsh7jjgg0ctc"]
+[gd_scene load_steps=34 format=3 uid="uid://cdsh7jjgg0ctc"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ngwv3"]
 [ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="2_b748r"]
 [ext_resource type="AudioStream" uid="uid://c2u7gdos8441w" path="res://Sound Effects/andando.mp3" id="2_fbw2c"]
 [ext_resource type="AudioStream" uid="uid://cnhelj34yt740" path="res://Sound Effects/90710__ledhed2222__laser_sustained.mp3" id="2_t2qqb"]
 [ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="3_nq1ja"]
+[ext_resource type="AudioStream" uid="uid://b2n500bnr6ayo" path="res://Sound Effects/Male_Hurt_-_Sound_Effect.wav" id="4_ejlkt"]
 [ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="5_3w08x"]
 [ext_resource type="Script" path="res://Scripts/player/small_l.gd" id="6_bu0yn"]
 [ext_resource type="PackedScene" uid="uid://nplu4kvmx5q3" path="res://Scenes/color_shader.tscn" id="6_kwi33"]
-[ext_resource type="PackedScene" uid="uid://ytsj7423nsd2" path="res://Scenes/movie_shader.tscn" id="9_7r44p"]
 [ext_resource type="VideoStream" path="res://old-film-grain-overlay-Video-Audio-footage-HD-Free.ogv" id="9_f3nq1"]
-[ext_resource type="Shader" path="res://Shaders/ray.gdshader" id="10_gs3h3"]
 [ext_resource type="Script" path="res://Scripts/VideoStreamPlayer.gd" id="10_tkxf8"]
-[ext_resource type="Texture2D" uid="uid://ccvdd4n2prlgn" path="res://Sprites/Player/player andando.png" id="13_ahsgv"]
+[ext_resource type="PackedScene" uid="uid://r4dfgo2irm7q" path="res://Scenes/ray_shader_jogador.tscn" id="10_u2kbe"]
+[ext_resource type="Texture2D" uid="uid://pywht40puive" path="res://Sprites/Player/player andandoo.png" id="11_fuv1e"]
+[ext_resource type="PackedScene" uid="uid://haldt6xfb1xm" path="res://Scenes/morte_player.tscn" id="12_k05m0"]
 [ext_resource type="PackedScene" uid="uid://bw3ujn6j2u8bf" path="res://Scenes/black_shader.tscn" id="14_2dab1"]
 [ext_resource type="Script" path="res://Scripts/player/Avisos_pro_jogador.gd" id="15_wxl0i"]
 [ext_resource type="Texture2D" uid="uid://lmgytwrhy6q2" path="res://Sprites/cenario/itens/caveira.png" id="16_u17mj"]
+[ext_resource type="Texture2D" uid="uid://dxfexmfast14l" path="res://Sprites/cenario/chave vermelha.png" id="17_stn7l"]
+[ext_resource type="Script" path="res://Scripts/player/KeyRect.gd" id="18_20tt4"]
+[ext_resource type="Script" path="res://Scripts/player/ray.gd" id="18_ieka3"]
+[ext_resource type="Script" path="res://Scripts/player/player_hp.gd" id="18_x1ukb"]
+[ext_resource type="Texture2D" uid="uid://t2nnvljfg8bo" path="res://Sprites/coracão.png" id="19_a713n"]
+
+[sub_resource type="Animation" id="Animation_cj30i"]
+resource_name = "zoom_out"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VideoStreamPlayer:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb2jh"]
+_data = {
+"zoom_out": SubResource("Animation_cj30i")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvj1p"]
 radius = 25.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kebnw"]
-light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ipuyi"]
 closed = false
@@ -32,25 +68,6 @@ closed = false
 polygon = PackedVector2Array(0, -5, 0, 5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7jei"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnao7"]
-shader = ExtResource("10_gs3h3")
-shader_parameter/beams = 2
-shader_parameter/energy = 3.0
-shader_parameter/roughness = 3
-shader_parameter/frequency = 10
-shader_parameter/speed = 1.0
-shader_parameter/thickness = 0.019
-shader_parameter/outline_thickness = 0.03
-shader_parameter/beam_difference = 0.0
-shader_parameter/glow = 0.0
-shader_parameter/outline_glow = 3.0
-shader_parameter/color = Color(0.909804, 1, 1, 0)
-shader_parameter/outline_color = Color(1, 1, 0.960784, 0.368627)
-shader_parameter/progress = 1.0
-shader_parameter/y_offset = 0.0
-shader_parameter/fixed_edge_size = 0.5
-shader_parameter/noise_scale = Vector2(15, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_irwnb"]
 
@@ -65,11 +82,34 @@ font_size = 32
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["playable"]]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qgy8h"]
+cull_mode = 2
+polygon = PackedVector2Array(2, -1, 13, 5, 11, -7)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interface", "animation", "shader", "player_sprite", "left", "right", "ray", "laser_sound", "steps", "hurt_sound", "animação_morte", "bigluz", "luz", "luz2") groups=["playable"]]
 position = Vector2(960, 540)
 script = ExtResource("1_ngwv3")
 steps_frame_speed_walking = 500
 steps_frame_speed_running = 200
+interface = NodePath("player_hud")
+animation = NodePath("AnimationPlayer")
+shader = NodePath("Color_Shader")
+player_sprite = NodePath("Player")
+left = NodePath("FOV/left")
+right = NodePath("FOV/right")
+ray = NodePath("ray_shader")
+laser_sound = NodePath("laser")
+steps = NodePath("steps")
+hurt_sound = NodePath("player_hurt_sound")
+"animação_morte" = NodePath("Morte_Player")
+bigluz = NodePath("FOV/big_l")
+luz = NodePath("FOV/small_l")
+luz2 = NodePath("FOV/small_l2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bb2jh")
+}
 
 [node name="steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fbw2c")
@@ -80,96 +120,13 @@ stream = ExtResource("2_t2qqb")
 volume_db = -5.0
 pitch_scale = 0.3
 
+[node name="player_hurt_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ejlkt")
+volume_db = -5.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 2)
 shape = SubResource("CircleShape2D_xvj1p")
-
-[node name="Cw" type="Sprite2D" parent="."]
-visible = false
-self_modulate = Color(1, 0, 0, 0.572549)
-material = SubResource("CanvasItemMaterial_kebnw")
-position = Vector2(-11, -2)
-texture = ExtResource("2_b748r")
-
-[node name="fov" type="Node2D" parent="."]
-visible = false
-
-[node name="small_l" type="PointLight2D" parent="fov"]
-position = Vector2(-10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("2_b748r")
-offset = Vector2(10, 0)
-texture_scale = 0.15
-
-[node name="small_l2" type="PointLight2D" parent="fov"]
-visible = false
-position = Vector2(-10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("3_nq1ja")
-offset = Vector2(10, 0)
-texture_scale = 1.5
-
-[node name="big_l" type="PointLight2D" parent="fov"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("2_b748r")
-texture_scale = 3.0
-
-[node name="left" type="LightOccluder2D" parent="fov"]
-rotation = -0.785398
-occluder = SubResource("OccluderPolygon2D_ipuyi")
-
-[node name="right" type="LightOccluder2D" parent="fov"]
-rotation = 0.785398
-occluder = SubResource("OccluderPolygon2D_ipuyi")
-
-[node name="fov2" type="Node2D" parent="."]
-visible = false
-
-[node name="small_l" type="PointLight2D" parent="fov2"]
-position = Vector2(-10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("2_b748r")
-offset = Vector2(10, 0)
-texture_scale = 0.15
-
-[node name="small_l2" type="PointLight2D" parent="fov2"]
-visible = false
-position = Vector2(-10, 0)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("3_nq1ja")
-offset = Vector2(10, 0)
-texture_scale = 1.5
-
-[node name="big_l" type="PointLight2D" parent="fov2"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(10, 0)
-blend_mode = 2
-shadow_enabled = true
-shadow_item_cull_mask = 3
-texture = ExtResource("2_b748r")
-texture_scale = 3.0
-
-[node name="left" type="LightOccluder2D" parent="fov2"]
-position = Vector2(0, -3)
-rotation = -0.785398
-occluder = SubResource("OccluderPolygon2D_ipuyi")
-
-[node name="right" type="LightOccluder2D" parent="fov2"]
-position = Vector2(0, 3)
-rotation = 0.785398
-occluder = SubResource("OccluderPolygon2D_ipuyi")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="fov2"]
-occluder = SubResource("OccluderPolygon2D_67hjq")
 
 [node name="FOV" type="Node2D" parent="."]
 position = Vector2(65, -1)
@@ -225,11 +182,20 @@ scale = Vector2(115.688, 53.85)
 position = Vector2(4.74794, 0.499989)
 scale = Vector2(119.531, 54.25)
 
-[node name="movie_shader" parent="." instance=ExtResource("9_7r44p")]
+[node name="ray_shader" parent="." instance=ExtResource("10_u2kbe")]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(22, 10)
+rotation = -1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("11_fuv1e")
+hframes = 3
+
+[node name="Morte_Player" parent="." instance=ExtResource("12_k05m0")]
 visible = false
-light_mask = 1
-visibility_layer = 1
-position = Vector2(-5, 2)
+position = Vector2(22, -10)
+scale = Vector2(3, 3)
+frame_progress = 0.0
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -253,26 +219,9 @@ expand = true
 loop = true
 script = ExtResource("10_tkxf8")
 
-[node name="ray_shader" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_bnao7")
-position = Vector2(1042, 0)
-scale = Vector2(121.75, 16.7)
-texture = ExtResource("5_3w08x")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-
-[node name="Line2D" type="Line2D" parent="RayCast2D"]
-
-[node name="Player" type="Sprite2D" parent="."]
-position = Vector2(22, 10)
-rotation = -1.5708
-scale = Vector2(3, 3)
-texture = ExtResource("13_ahsgv")
-hframes = 3
-
 [node name="Camera2D" type="Camera2D" parent="."]
 material = SubResource("ShaderMaterial_irwnb")
+zoom = Vector2(1.2, 1.2)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 z_index = 50
@@ -302,12 +251,13 @@ texture = ExtResource("2_b748r")
 texture_scale = 2.0
 
 [node name="player_hud" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="player_hud" node_paths=PackedStringArray("icon")]
-offset_left = 1302.0
-offset_top = 8.0
-offset_right = 1903.0
-offset_bottom = 121.0
+offset_left = 98.0
+offset_top = 170.0
+offset_right = 699.0
+offset_bottom = 283.0
 text = "Caveira quer falar com você, aperte 'E'!"
 label_settings = SubResource("LabelSettings_8bduv")
 script = ExtResource("15_wxl0i")
@@ -317,3 +267,80 @@ icon = NodePath("Sprite2D")
 position = Vector2(-35, 26)
 scale = Vector2(4, 4)
 texture = ExtResource("16_u17mj")
+
+[node name="TextureRect" type="TextureRect" parent="player_hud/Label"]
+layout_mode = 0
+offset_left = -48.0
+offset_top = 747.0
+offset_right = -40.0
+offset_bottom = 760.0
+scale = Vector2(8, 8)
+texture = ExtResource("17_stn7l")
+script = ExtResource("18_20tt4")
+
+[node name="player_hp" type="Control" parent="player_hud" node_paths=PackedStringArray("hp1", "hp2", "hp3")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -7.0
+offset_top = -46.0
+offset_right = 33.0
+offset_bottom = -6.0
+script = ExtResource("18_x1ukb")
+hp1 = NodePath("hearth_1")
+hp2 = NodePath("hearth_2")
+hp3 = NodePath("hearth_3")
+
+[node name="hearth_1" type="TextureRect" parent="player_hud/player_hp"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 79.0
+offset_right = 70.0
+offset_bottom = 119.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_a713n")
+
+[node name="hearth_2" type="TextureRect" parent="player_hud/player_hp"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 79.0
+offset_right = 170.0
+offset_bottom = 119.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_a713n")
+
+[node name="hearth_3" type="TextureRect" parent="player_hud/player_hp"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 79.0
+offset_right = 270.0
+offset_bottom = 119.0
+scale = Vector2(2, 2)
+texture = ExtResource("19_a713n")
+
+[node name="RayCast2D" type="RayCast2D" parent="." node_paths=PackedStringArray("sparkle", "occluder", "limit", "parede_sound")]
+position = Vector2(80, 0)
+target_position = Vector2(883, 0)
+collision_mask = 33
+hit_from_inside = true
+script = ExtResource("18_ieka3")
+sparkle = NodePath("Light")
+occluder = NodePath("../FOV/right")
+limit = NodePath("LightOccluder2D")
+parede_sound = NodePath("parede_som")
+
+[node name="parede_som" type="AudioStreamPlayer2D" parent="RayCast2D"]
+position = Vector2(-80, 0)
+stream = ExtResource("2_t2qqb")
+volume_db = -5.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="RayCast2D"]
+occluder = SubResource("OccluderPolygon2D_qgy8h")
+
+[node name="Light2" type="Sprite2D" parent="RayCast2D/LightOccluder2D"]
+self_modulate = Color(0.909804, 0.909804, 0.909804, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_nq1ja")
+
+[node name="Light" type="Sprite2D" parent="RayCast2D"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("3_nq1ja")

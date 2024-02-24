@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://duchivyd2pnb1"]
+
+[ext_resource type="PackedScene" uid="uid://haldt6xfb1xm" path="res://Scenes/morte_player.tscn" id="1_moalm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yktsq"]
+size = Vector2(3.67901, 3.27804)
+
+[node name="morte" type="CharacterBody2D"]
+position = Vector2(-2722, 868)
+scale = Vector2(5.64908, 6.23726)
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_moalm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2.30122, -9.61962)
+shape = SubResource("RectangleShape2D_yktsq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

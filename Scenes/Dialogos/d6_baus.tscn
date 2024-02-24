@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://daa01jynxlqfr"]
+
+[ext_resource type="Script" path="res://Scripts/dialogos/baus_d6.gd" id="1_1nr74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x87nt"]
+radius = 183.003
+
+[node name="baus_d6" type="Area2D" node_paths=PackedStringArray("_hud")]
+position = Vector2(-1660, 829)
+script = ExtResource("1_1nr74")
+_hud = NodePath("hud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1868, 1557)
+shape = SubResource("CircleShape2D_x87nt")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

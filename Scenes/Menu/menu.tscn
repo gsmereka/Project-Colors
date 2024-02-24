@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnp6d2k8b7jmc"]
+[gd_scene load_steps=21 format=3 uid="uid://dnp6d2k8b7jmc"]
 
 [ext_resource type="Texture2D" uid="uid://4a3k46ckndov" path="res://Sprites/menu/cenario_fundo.png" id="1_mb4ly"]
 [ext_resource type="Texture2D" uid="uid://bxp2u2wigqt3w" path="res://Sprites/menu/sem_cor.png" id="2_vrot7"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Scripts/Menu/botao_Bônus.gd" id="10_ntlgc"]
 [ext_resource type="Script" path="res://Scripts/Menu/Botao_Sair.gd" id="12_f71u0"]
 [ext_resource type="AudioStream" uid="uid://bjth4wkjiij4k" path="res://Musics/music_menu.mp3" id="13_es2j5"]
+[ext_resource type="Texture2D" uid="uid://bdedb3lb1jgly" path="res://Sprites/menu/config.png" id="13_migv6"]
+[ext_resource type="Script" path="res://Scripts/Menu/configurações.gd" id="14_p38kh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8guqf"]
 shader = ExtResource("3_dkl58")
@@ -29,6 +31,10 @@ shader_parameter/color = null
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o6r03"]
 shader = ExtResource("3_dkl58")
 shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tiesj"]
+shader = ExtResource("3_dkl58")
+shader_parameter/color = null
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -141,6 +147,28 @@ script = ExtResource("5_cyirg")
 color = Color(0.458824, 0.0745098, 0.0745098, 1)
 skin = 1
 
+[node name="configurações" type="TextureButton" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_tiesj")
+offset_left = 1674.0
+offset_top = 58.0
+offset_right = 1815.0
+offset_bottom = 190.0
+texture_normal = ExtResource("13_migv6")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("14_p38kh")
+
+[node name="Control" type="Control" parent="CanvasLayer/configurações"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 22.0
+offset_right = 117.0
+offset_bottom = 105.0
+script = ExtResource("5_cyirg")
+color = Color(0.458824, 0.0745098, 0.0745098, 1)
+skin = 1
+config = true
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_es2j5")
 autoplay = true
@@ -153,3 +181,5 @@ autoplay = true
 [connection signal="mouse_exited" from="CanvasLayer/Créditos/Control" to="CanvasLayer/Créditos/Control" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/Sair/Control" to="CanvasLayer/Sair/Control" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Sair/Control" to="CanvasLayer/Sair/Control" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/configurações/Control" to="CanvasLayer/configurações/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/configurações/Control" to="CanvasLayer/configurações/Control" method="_on_mouse_exited"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjohqf13v2jl"]
+
+[ext_resource type="Script" path="res://Scripts/dialogos/d7_labirinto.gd" id="1_ylinf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x87nt"]
+radius = 183.003
+
+[node name="d7_labirinto" type="Area2D" node_paths=PackedStringArray("_hud")]
+position = Vector2(-1660, 829)
+script = ExtResource("1_ylinf")
+_hud = NodePath("hud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1868, 1557)
+shape = SubResource("CircleShape2D_x87nt")
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

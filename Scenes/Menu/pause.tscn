@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqjkspiltt1pe"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/pause/Continuar.gd" id="1_u5q6e"]
+[ext_resource type="Script" path="res://Scripts/Menu/pause/Configuraçoes.gd" id="2_bp33n"]
+[ext_resource type="Script" path="res://Scripts/Menu/pause/Menu Principal.gd" id="3_0rtdw"]
+[ext_resource type="Script" path="res://Scripts/Menu/pause/Sair.gd" id="4_5p40u"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vbtej"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oe7wf"]
+font_size = 112
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 479.0
+offset_bottom = 1079.0
+color = Color(0, 0, 0, 0.337255)
+
+[node name="Continuar" type="Button" parent="CanvasLayer"]
+offset_left = 90.0
+offset_top = 213.0
+offset_right = 240.0
+offset_bottom = 263.0
+scale = Vector2(2, 2)
+text = "Continuar"
+icon = SubResource("ViewportTexture_vbtej")
+script = ExtResource("1_u5q6e")
+
+[node name="Configuraçoes" type="Button" parent="CanvasLayer"]
+offset_left = 90.0
+offset_top = 360.0
+offset_right = 240.0
+offset_bottom = 410.0
+scale = Vector2(2, 2)
+text = "Configurações"
+script = ExtResource("2_bp33n")
+
+[node name="Menu Principal" type="Button" parent="CanvasLayer"]
+offset_left = 88.0
+offset_top = 504.0
+offset_right = 238.0
+offset_bottom = 554.0
+scale = Vector2(2, 2)
+text = "Menu Principal
+"
+script = ExtResource("3_0rtdw")
+
+[node name="Sair" type="Button" parent="CanvasLayer"]
+offset_left = 87.0
+offset_top = 789.0
+offset_right = 237.0
+offset_bottom = 839.0
+scale = Vector2(2, 2)
+text = "Sair do Jogo"
+script = ExtResource("4_5p40u")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 771.0
+offset_top = 412.0
+offset_right = 1325.0
+offset_bottom = 627.0
+text = "Pause"
+label_settings = SubResource("LabelSettings_oe7wf")
+
+[connection signal="pressed" from="CanvasLayer/Continuar" to="CanvasLayer/Continuar" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Configuraçoes" to="CanvasLayer/Configuraçoes" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu Principal" to="CanvasLayer/Menu Principal" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Sair" to="CanvasLayer/Sair" method="_on_pressed"]

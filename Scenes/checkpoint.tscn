@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://byk157eft6i5w"]
+
+[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_ug8te"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhia1"]
+radius = 110.073
+
+[node name="checkpoint" type="Area2D"]
+script = ExtResource("1_ug8te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nhia1")
+debug_color = Color(0.847059, 0, 0.988235, 0.419608)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

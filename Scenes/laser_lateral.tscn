@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgvel6ex2ydgv"]
+
+[ext_resource type="Script" path="res://Scripts/laser_lateral.gd" id="1_7dtma"]
+[ext_resource type="Shader" path="res://Shaders/ray.gdshader" id="2_0mebl"]
+[ext_resource type="Texture2D" uid="uid://c3c326k0i6n2o" path="res://Sprites/square.png" id="3_p1n53"]
+[ext_resource type="Script" path="res://Scripts/ray_shader_inimigo.gd" id="4_ui210"]
+[ext_resource type="Texture2D" uid="uid://dj4bhlbd8spva" path="res://Sprites/cw.png" id="5_f8ck8"]
+[ext_resource type="Texture2D" uid="uid://p0jrjt2fp0da" path="res://Sprites/light.png" id="6_n5psh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnao7"]
+shader = ExtResource("2_0mebl")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.1
+shader_parameter/outline_thickness = 0.034
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 3.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.47
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.5
+shader_parameter/noise_scale = Vector2(15, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5aru"]
+size = Vector2(15.8686, 0.838324)
+
+[node name="laser_lateral" type="Node2D" node_paths=PackedStringArray("inicio", "fim", "content")]
+position = Vector2(-1676, 517)
+script = ExtResource("1_7dtma")
+inicio = NodePath("inicio")
+fim = NodePath("fim")
+content = NodePath("content")
+
+[node name="content" type="Node2D" parent="."]
+
+[node name="ray_shader" type="Sprite2D" parent="content" node_paths=PackedStringArray("lateral")]
+light_mask = 513
+material = SubResource("ShaderMaterial_bnao7")
+position = Vector2(9.5127, 923.065)
+rotation = 1.5708
+scale = Vector2(194.325, 16.7)
+texture = ExtResource("3_p1n53")
+script = ExtResource("4_ui210")
+lateral = NodePath("Lateral")
+
+[node name="PointLight2D" type="PointLight2D" parent="content/ray_shader"]
+visible = false
+blend_mode = 2
+texture = ExtResource("5_f8ck8")
+texture_scale = 14.1
+
+[node name="Area2D" type="Area2D" parent="content/ray_shader"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="content/ray_shader/Area2D"]
+position = Vector2(0.0164268, -0.0598802)
+shape = SubResource("RectangleShape2D_j5aru")
+
+[node name="Lateral" type="Node2D" parent="content/ray_shader"]
+
+[node name="Light2" type="Sprite2D" parent="content/ray_shader/Lateral"]
+position = Vector2(7.87411, -0.0890679)
+scale = Vector2(0.00277719, 0.0427769)
+texture = ExtResource("6_n5psh")
+
+[node name="Light" type="Sprite2D" parent="content/ray_shader/Lateral"]
+position = Vector2(-7.92276, -0.148933)
+scale = Vector2(0.00282583, 0.0427769)
+texture = ExtResource("6_n5psh")
+
+[node name="inicio" type="Marker2D" parent="."]
+position = Vector2(17, 20)
+
+[node name="fim" type="Marker2D" parent="."]
+position = Vector2(1057, -34)
+
+[connection signal="body_shape_entered" from="content/ray_shader/Area2D" to="content/ray_shader" method="_on_area_2d_body_shape_entered"]

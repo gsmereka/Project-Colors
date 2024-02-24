@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://ket2rsqfn16r"]
+
+[ext_resource type="Texture2D" uid="uid://dm8dxwob23ag" path="res://Sprites/fantasmas/decoy.png" id="1_8vcpg"]
+[ext_resource type="Script" path="res://Scripts/fantasmas/decoy.gd" id="2_uoiqb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5nhw"]
+radius = 11.0454
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm7n8"]
+atlas = ExtResource("1_8vcpg")
+region = Rect2(0, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jy6q"]
+atlas = ExtResource("1_8vcpg")
+region = Rect2(47, 0, 47, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd1o5"]
+atlas = ExtResource("1_8vcpg")
+region = Rect2(94, 0, 47, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uejig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm7n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jy6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm7n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jy6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm7n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jy6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm7n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jy6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd1o5")
+}],
+"loop": true,
+"name": &"decoy_iddle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gixxa"]
+radius = 6.08276
+
+[node name="decoy" type="CharacterBody2D"]
+script = ExtResource("2_uoiqb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j5nhw")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="decoy_anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_uejig")
+animation = &"decoy_iddle"
+frame_progress = 0.0996877
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gixxa")
+disabled = true
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

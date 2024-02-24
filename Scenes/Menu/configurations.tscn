@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://d04ncur0370b0"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/controladorvolume.gd" id="1_6unug"]
+[ext_resource type="Script" path="res://Scripts/Menu/telacheia.gd" id="2_ndeyy"]
+[ext_resource type="Script" path="res://Scripts/Menu/sair_configurações_Button.gd" id="3_1hq6t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eohvi"]
+font_size = 42
+
+[node name="Configurations" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 637.0
+offset_top = 413.0
+offset_right = 1301.0
+offset_bottom = 882.0
+color = Color(0, 0, 0, 0.839216)
+
+[node name="controlador_volume" type="HSlider" parent="CanvasLayer"]
+offset_left = 821.0
+offset_top = 717.0
+offset_right = 1119.0
+offset_bottom = 773.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_6unug")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 835.0
+offset_top = 664.0
+offset_right = 1110.0
+offset_bottom = 722.0
+pivot_offset = Vector2(178, 400)
+text = "Volume Geral"
+label_settings = SubResource("LabelSettings_eohvi")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 834.0
+offset_top = 569.0
+offset_right = 1109.0
+offset_bottom = 627.0
+pivot_offset = Vector2(178, 400)
+text = "Tela Cheia"
+label_settings = SubResource("LabelSettings_eohvi")
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 828.0
+offset_top = 442.0
+offset_right = 1118.0
+offset_bottom = 500.0
+pivot_offset = Vector2(178, 400)
+text = "Configurações"
+label_settings = SubResource("LabelSettings_eohvi")
+
+[node name="fullscreen_button" type="CheckButton" parent="CanvasLayer"]
+offset_left = 1047.0
+offset_top = 563.0
+offset_right = 1091.0
+offset_bottom = 601.0
+scale = Vector2(2, 2)
+script = ExtResource("2_ndeyy")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1221.0
+offset_top = 431.0
+offset_right = 1280.0
+offset_bottom = 470.0
+text = " X "
+script = ExtResource("3_1hq6t")
+
+[connection signal="toggled" from="CanvasLayer/fullscreen_button" to="CanvasLayer/fullscreen_button" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
