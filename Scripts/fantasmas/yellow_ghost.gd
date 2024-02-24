@@ -1,20 +1,21 @@
 extends CharacterBody2D
 
 
-@export var speed = 500
+const speed = 800
 var target : Vector2
 var _state: int = moviment
-@export var hp = 70
+var hp = 50
 var damage = 1
 var random_dir
 var direction: Vector2
-
+@export var type: int = 2
 @onready var _transform := $ghost_animated as AnimatedSprite2D
 
 
 enum {iddle, moviment, dead, attack}
 
 func _physics_process(delta):
+	get_node("ghost_animated").rotation += 0.05
 	if hp ==  0:
 		_dead()
 	velocity = direction.normalized() * speed
@@ -33,8 +34,13 @@ func _physics_process(delta):
 func _ready():
 	_transform.play("yellow_animate")
 	
+@onready var save_dir = randi() % 4
+
 func random_generation():
 	random_dir = randi() % 4
+	if (random_dir == save_dir):
+		random_dir = randi() % 4
+	save_dir = random_dir
 	_random_direction()
 
 func _random_direction():
@@ -62,7 +68,7 @@ func move_down():
 	velocity = Vector2.DOWN * speed 
 
 func _attack():
-	target = get_parent().get_node("player").position
+	target = Global.player_node.position
 	_transform.play("yellow_attack")
 
 func _iddle():
@@ -73,14 +79,14 @@ func _dead():
 	queue_free()
 	
 func _on_hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("Player"):
+	if body.is_in_group("grupoplayer"):
 		
 		print("levou")
 		hp -= body.damage
 	pass # Replace with function body.
 
 func _on_attack_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("Player"):
+	if body.is_in_group("grupoplayer"):
 		_attack()
 		print("bateu")
 		body.hp -= damage

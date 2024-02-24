@@ -48,7 +48,7 @@ var _dialog_data: Dictionary = {
 	},
 	1: {
 		"faceset": "res://Sprites/Dialogo/ham/ham1.png",
-		"dialog": "Ham? Você seria quem?",
+		"dialog": "Hãm? Você seria quem?",
 		"title": "Ham"
 	},
 	2: {
@@ -76,13 +76,15 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 
 	if (body.is_in_group("playable")):
 		player_inside = true
+		Global.on_cutscene = false
 		if (!Global.on_cutscene):
-			Global.player_warning_text = "O Caveira Quer Falar, pressione 'E'!"
+			Global.player_warning_text = "O Fantasma parece querer conversar, pressione 'E'!"
 	pass # Replace with function body.
 
 
 func _on_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if (body.is_in_group("playable")):
 		player_inside = false
+		Global.on_cutscene = false
 		Global.player_warning_text = ""
 	pass # Replace with function body.

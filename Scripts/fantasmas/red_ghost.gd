@@ -9,7 +9,7 @@ var pos_start:Vector2
 var pos_cur:Vector2
 @export var hp = 100
 var damage = 1
-
+@export var type = 0
 
 @onready var _transform := $ghost_animated as AnimatedSprite2D
 
@@ -43,7 +43,7 @@ func _ready():
 	pos_start = global_position
 	
 func _attack():
-		_target = get_parent().get_node("Player").position
+		_target = Global.player_node.position
 		direction =  _target + self.position
 		if hp <= 4:
 			_transform.play("red_rageattack")
@@ -53,7 +53,7 @@ func _attack():
 		
 			
 func _iddle():
-	self.visible = false
+	#self.visible = false
 	_transform.play("red_animate")
 	
 func _dead():
@@ -83,7 +83,7 @@ func _persue():
 			_low_hp()
 		
 		self.visible = true
-		_target = get_parent().get_node("Player").position
+		_target = Global.player_node.position
 		direction =  _target - self.position
 		velocity = direction.normalized() * speed
 		pos_cur = self.position
@@ -91,7 +91,7 @@ func _persue():
 func _low_hp():
 		self.visible = true
 		_transform.play("red_rage")
-		_target = get_parent().get_node("Player").position
+		_target = Global.player_node.position
 		direction =  _target - self.position
 		velocity = direction.normalized() * speed * 1.5
 		pos_cur = self.position

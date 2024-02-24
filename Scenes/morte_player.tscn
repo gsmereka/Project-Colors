@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://haldt6xfb1xm"]
+
+[ext_resource type="Texture2D" uid="uid://cixcn34hvvgyf" path="res://Sprites/Player/morte.png" id="1_j2iap"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0lld"]
+atlas = ExtResource("1_j2iap")
+region = Rect2(0, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25p6d"]
+atlas = ExtResource("1_j2iap")
+region = Rect2(45, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jviv1"]
+atlas = ExtResource("1_j2iap")
+region = Rect2(90, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjxvo"]
+atlas = ExtResource("1_j2iap")
+region = Rect2(134, 0, 67, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_atkyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0lld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25p6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jviv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjxvo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(-4.95652, 2.08425)
+scale = Vector2(0.610147, 0.454166)
+sprite_frames = SubResource("SpriteFrames_atkyh")
+autoplay = "default"
+frame_progress = 0.745786

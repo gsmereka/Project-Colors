@@ -5,6 +5,7 @@ var open:bool = false
 var player_inside: bool = false
 var texture = preload("res://Sprites/cenario/bau aberto.png")
 @export var id: int = 0
+@export var Fantasma: CharacterBody2D = null
 
 func _ready():
 	if (!Global.chests[id]):
@@ -12,6 +13,7 @@ func _ready():
 		get_node("bau").texture = texture
 	pass # Replace with function body.
 
+var fantasma: PackedScene = preload("res://Scenes/fantasmas/yellow_ghost.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,6 +23,8 @@ func _process(delta):
 		Global.chests[id] = 0
 		get_node("bau").texture = texture
 		open = true
+		var enemy = fantasma.instantiate()
+		add_child(enemy)
 		Global.player_warning_text = ""
 		player_inside = false
 		player = null

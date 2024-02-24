@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var steps_frame_speed_running: int = 150
 const SPEED = 300.0
 @export var hp: int = 3
+@export var interface: CanvasLayer = null
 var speed: float
 var run_speed: float = 400
 var walk_speed: float = 200
@@ -28,6 +29,7 @@ var	angle = 0
 var	can_shot: bool = true
 
 # Nodes do player
+@export var animation: AnimationPlayer = null
 @export var shader: Sprite2D = null
 @export var player_sprite: Sprite2D = null
 @export var left: LightOccluder2D = null
@@ -35,6 +37,7 @@ var	can_shot: bool = true
 @export var ray: Sprite2D = null
 @export var laser_sound: AudioStreamPlayer = null
 @export var steps: AudioStreamPlayer = null
+@export var hurt_sound: AudioStreamPlayer = null
 
 func _ready():
 	Global.player_node = self
@@ -44,6 +47,7 @@ func _ready():
 		self.position = Global.checkpoint_position
 	keys = Global.player_keys
 	init_step_time = Time.get_ticks_msec()
+	interface.visible = true
 		
 
 func prepare_dimension():
@@ -145,30 +149,65 @@ func steps_sound():
 			steps.stop()
 	pass
 
-func _gotomenu():
+func change_scene():
 	Global.dimension_list = []
-	get_tree().change_scene_to_file("res://Scenes/primeira_casa.tscn")
+	Global.boss_fight = false
+	Global.on_cutscene = false
+	Global.save_game()
+	get_tree().change_scene_to_file("res://Scenes/cutscenes/faleceu.tscn")
 	#get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	pass
 
-func _plalyer_die():
+var die: bool = false
+@export var animação_morte: AnimatedSprite2D = null
+@export var bigluz: PointLight2D = null
+@export var luz: PointLight2D = null
+@export var luz2: PointLight2D = null
+
+func _player_die():
 	if (hp <= 0):
-		_gotomenu()
+		player_sprite.visible = false
+		animação_morte.visible = true
+		bigluz.enabled = false
+		luz.enabled = false
+		luz2.enabled = false
+		if (!animação_morte.is_playing()):
+			animação_morte.frame = 0
+			animação_morte.play()
+		if (animação_morte.frame == 7):
+			change_scene()
+		die = true
 	#if (Input.is_action_just_pressed("Fire")):
-		#_gotomenu()
+		#change_scene()
 	pass
 
+@onready var save_hp = hp
+
+var pause_node = preload("res://Scenes/Menu/pause.tscn")
+			
+	
 func _physics_process(delta):
-	velocity = run()
-	_plalyer_die()
-	steps_sound()
-	animate_steps()
-	atack()
-	control_atack()
-	change_lantern()
-	look_at(get_global_mouse_position())
-	move_and_slide()
-	Global.player_keys = keys
+		
+	if (!die):
+		if (hp != save_hp):
+			if (!hurt_sound.playing):
+				hurt_sound.play()
+			save_hp = hp
+		velocity = run()
+		steps_sound()
+		animate_steps()
+		atack()
+		control_atack()
+		change_lantern()
+		look_at(get_global_mouse_position())
+		move_and_slide()
+		Global.player_keys = keys
+		if (Input.is_action_just_pressed("Pause")):
+			var pause = pause_node.instantiate()
+			get_tree().root.add_child(pause)
+			get_tree().paused = true
+	_player_die()
+	
 
 var frame_direction: int = 1
 var step_limit = steps_frame_speed_walking

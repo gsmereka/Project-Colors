@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://b55wuxubk7nt4"]
+
+[ext_resource type="Texture2D" uid="uid://c827iaa7ao75o" path="res://Sprites/morte.png" id="1_hcy7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yktsq"]
+size = Vector2(15.1469, 16.817)
+
+[sub_resource type="Animation" id="Animation_tsrl4"]
+resource_name = "morte"
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hcy7l")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 2, 2]
+}
+
+[sub_resource type="Animation" id="Animation_mgnc1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ui2x"]
+_data = {
+"RESET": SubResource("Animation_mgnc1"),
+"morte": SubResource("Animation_tsrl4")
+}
+
+[node name="died ghost" type="CharacterBody2D"]
+position = Vector2(-2679, 2338)
+scale = Vector2(2.37678, 2.49745)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.210388, 0)
+scale = Vector2(1.00895, 1)
+texture = ExtResource("1_hcy7l")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2.04248, -0.875854)
+shape = SubResource("RectangleShape2D_yktsq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0ui2x")
+}
+autoplay = "morte"

@@ -10,7 +10,7 @@ func _ready():
 		Global.dimension_list[0].visible = false
 		Global.dimension_list[1].visible = false
 		Global.dimension_list[2].visible = false
-	Global.actual_color = 1
+	Global.actual_color = 2
 	Global.actual_dimension = Global.dimension_list[Global.actual_color]
 	if (Global.actual_dimension):
 		Global.actual_dimension.visible = true

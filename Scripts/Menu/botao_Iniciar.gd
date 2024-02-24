@@ -11,5 +11,5 @@ func _process(delta):
 	if (mouse_inside):
 		if (Input.is_action_just_pressed("Fire")):
 			Global.reset_game_data()
-			get_tree().change_scene_to_file("res://Scenes/primeira_casa.tscn")
+			get_tree().change_scene_to_file("res://Scenes/cutscenes/cutscene_inicial.tscn")
 	pass

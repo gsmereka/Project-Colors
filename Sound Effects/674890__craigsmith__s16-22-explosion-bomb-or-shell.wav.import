@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4cp64fjjfh1i"
+path="res://.godot/imported/674890__craigsmith__s16-22-explosion-bomb-or-shell.wav-2a3cd88a799c986810a8e0bfe4c60946.sample"
+
+[deps]
+
+source_file="res://Sound Effects/674890__craigsmith__s16-22-explosion-bomb-or-shell.wav"
+dest_files=["res://.godot/imported/674890__craigsmith__s16-22-explosion-bomb-or-shell.wav-2a3cd88a799c986810a8e0bfe4c60946.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -22,49 +22,26 @@ func _process(delta):
 
 
 const _DIALOG_SCREEN: PackedScene = preload("res://Scenes/User Interface/dialog_screen.tscn")
-#var _dialog_data: Dictionary = {
-	#0: {
-		#"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
-		#"dialog": "Que lindo quadro",
-		#"title": "Caveira"
-	#},
-	#1: {
-		#"faceset": "res://Sprites/Dialogo/ham/ham1.png",
-		#"dialog": "Não sabia que você gostava de arte",
-		#"title": "Ham"
-	#},
-	#2: {
-		#"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
-		#"dialog": "Eu já posei para o leonardo da vinci diversas vezes",
-		#"title": "Caveira"
-	#}
-#}
-
 var _dialog_data: Dictionary = {
 	0: {
-		"faceset":"res://Sprites/light.png",
-		"dialog": "Olá senhores, bem vindos a mansão, vocês são hospedes novos ou já tem cadastro?",
-		"title": "??????"
-	},
-	1: {
-		"faceset": "res://Sprites/Dialogo/ham/ham1.png",
-		"dialog": "Ham? Você seria quem?",
+		"faceset":"res://Sprites/Dialogo/ham/ham1.png",
+		"dialog": "Quem seria você?",
 		"title": "Ham"
 	},
-	2: {
+	1: {
 		"faceset": "res://Sprites/light.png",
-		"dialog": "Sou seu recepcionista, então voltando ao nosso atendimento...",
-		"title": "Recepcionista"
+		"dialog": "Sou o gerente da mansão, as instalações não estão abertas a visitação, peço que o senhor se retire.",
+		"title": "Gerente"
 	},
-	3: {
-		"faceset": "res://Sprites/Dialogo/Caveira/cav4.png",
-		"dialog": "Você tá morto meu chapa!",
+	2: {
+		"faceset": "res://Sprites/Dialogo/Caveira/cav5.png",
+		"dialog": "Ham, vamos dar um jeito nesse engomadinho, precisamos entrar para receber nossa recompensa!",
 		"title": "Caveira"
 	},
-	4: {
+	3: {
 		"faceset": "res://Sprites/light.png",
-		"dialog": "Não gostei do seu tom, cavalheiro, estarei informando a gerência sobre o ocorrido.",
-		"title": "Recepcionista"
+		"dialog": "Ameaças só estão liberadas a partir das 18:00 horas. ",
+		"title": "Gerente"
 	}
 }
 
@@ -76,8 +53,9 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 
 	if (body.is_in_group("playable")):
 		player_inside = true
+		Global.on_cutscene = false
 		if (!Global.on_cutscene):
-			Global.player_warning_text = "O Caveira Quer Falar, pressione 'E'!"
+			Global.player_warning_text = "O Fantasma parece querer conversar, pressione 'E'!"
 	pass # Replace with function body.
 
 

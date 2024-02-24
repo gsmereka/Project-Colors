@@ -15,6 +15,7 @@ rotation = 1.35952
 script = ExtResource("1_k6bfu")
 
 [node name="bau" type="Sprite2D" parent="."]
+use_parent_material = true
 position = Vector2(-0.167179, -0.985926)
 scale = Vector2(3.26667, 3.40123)
 texture = ExtResource("1_y3kfb")

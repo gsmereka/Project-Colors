@@ -1,0 +1,179 @@
+[gd_scene load_steps=18 format=3 uid="uid://dnp6d2k8b7jmc"]
+
+[ext_resource type="Texture2D" uid="uid://4a3k46ckndov" path="res://Sprites/menu/cenario_fundo.png" id="1_mb4ly"]
+[ext_resource type="Texture2D" uid="uid://bxp2u2wigqt3w" path="res://Sprites/menu/sem_cor.png" id="2_vrot7"]
+[ext_resource type="Shader" path="res://Shaders/Menu/color_select.gdshader" id="3_dkl58"]
+[ext_resource type="Texture2D" uid="uid://dpxbxxcqvpnpo" path="res://Sprites/menu/iniciar.png" id="3_whgqq"]
+[ext_resource type="Texture2D" uid="uid://dqqj3wlfkdhmd" path="res://Sprites/menu/continuar.png" id="4_0mwmf"]
+[ext_resource type="Script" path="res://Scripts/Menu/botao_Iniciar.gd" id="5_08jh5"]
+[ext_resource type="Script" path="res://Scripts/Menu/button.gd" id="5_cyirg"]
+[ext_resource type="Texture2D" uid="uid://braein8csplvm" path="res://Sprites/menu/sair.png" id="6_ciukd"]
+[ext_resource type="Texture2D" uid="uid://qwi64y3r7e14" path="res://Sprites/menu/credits.png" id="9_2a14v"]
+[ext_resource type="Script" path="res://Scripts/Menu/botao_Continuar.gd" id="9_rbvnq"]
+[ext_resource type="Script" path="res://Scripts/Menu/botao_Bônus.gd" id="10_ntlgc"]
+[ext_resource type="Script" path="res://Scripts/Menu/Botao_Sair.gd" id="12_f71u0"]
+[ext_resource type="AudioStream" uid="uid://bjth4wkjiij4k" path="res://Musics/music_menu.mp3" id="13_es2j5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8guqf"]
+shader = ExtResource("3_dkl58")
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrkkp"]
+shader = ExtResource("3_dkl58")
+shader_parameter/color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2u5h"]
+shader = ExtResource("3_dkl58")
+shader_parameter/color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6r03"]
+shader = ExtResource("3_dkl58")
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_mb4ly")
+
+[node name="bezalihamlet_image" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_vrot7")
+
+[node name="Iniciar" type="TextureButton" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8guqf")
+offset_left = 131.0
+offset_top = 244.0
+offset_right = 519.0
+offset_bottom = 332.0
+pivot_offset = Vector2(158, 531)
+button_mask = 2
+texture_normal = ExtResource("3_whgqq")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("5_08jh5")
+
+[node name="Control" type="Control" parent="CanvasLayer/Iniciar"]
+anchors_preset = 0
+offset_left = 32.0
+offset_right = 382.0
+offset_bottom = 83.0
+script = ExtResource("5_cyirg")
+color = Color(0.458824, 0.0745098, 0.0745098, 1)
+skin = 1
+
+[node name="Continuar" type="TextureButton" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_xrkkp")
+offset_left = 82.0
+offset_top = 413.0
+offset_right = 571.0
+offset_bottom = 513.0
+texture_normal = ExtResource("4_0mwmf")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("9_rbvnq")
+
+[node name="Control" type="Control" parent="CanvasLayer/Continuar"]
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 17.0
+offset_right = 490.0
+offset_bottom = 100.0
+script = ExtResource("5_cyirg")
+color = Color(0.00784314, 0.196078, 0.458824, 1)
+skin = 2
+
+[node name="Créditos" type="TextureButton" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_v2u5h")
+offset_left = 158.0
+offset_top = 594.0
+offset_right = 492.0
+offset_bottom = 694.0
+texture_normal = ExtResource("9_2a14v")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("10_ntlgc")
+
+[node name="Control" type="Control" parent="CanvasLayer/Créditos"]
+anchors_preset = 0
+offset_left = -33.0
+offset_top = 19.0
+offset_right = 379.0
+offset_bottom = 102.0
+script = ExtResource("5_cyirg")
+color = Color(0.705882, 0.662745, 0.192157, 1)
+skin = 3
+
+[node name="Sair" type="TextureButton" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_o6r03")
+offset_left = 219.0
+offset_top = 778.0
+offset_right = 450.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_ciukd")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("12_f71u0")
+
+[node name="Control" type="Control" parent="CanvasLayer/Sair"]
+anchors_preset = 0
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 226.0
+offset_bottom = 103.0
+script = ExtResource("5_cyirg")
+color = Color(0.458824, 0.0745098, 0.0745098, 1)
+skin = 1
+
+[node name="configurações" type="TextureButton" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_o6r03")
+offset_left = 1629.0
+offset_top = 74.0
+offset_right = 1860.0
+offset_bottom = 174.0
+texture_normal = ExtResource("6_ciukd")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("12_f71u0")
+
+[node name="Control" type="Control" parent="CanvasLayer/configurações"]
+anchors_preset = 0
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 226.0
+offset_bottom = 103.0
+script = ExtResource("5_cyirg")
+color = Color(0.458824, 0.0745098, 0.0745098, 1)
+skin = 1
+config = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_es2j5")
+autoplay = true
+
+[connection signal="mouse_entered" from="CanvasLayer/Iniciar/Control" to="CanvasLayer/Iniciar/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Iniciar/Control" to="CanvasLayer/Iniciar/Control" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Continuar/Control" to="CanvasLayer/Continuar/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Continuar/Control" to="CanvasLayer/Continuar/Control" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Créditos/Control" to="CanvasLayer/Créditos/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Créditos/Control" to="CanvasLayer/Créditos/Control" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Sair/Control" to="CanvasLayer/Sair/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Sair/Control" to="CanvasLayer/Sair/Control" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/configurações/Control" to="CanvasLayer/configurações/Control" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/configurações/Control" to="CanvasLayer/configurações/Control" method="_on_mouse_exited"]

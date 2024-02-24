@@ -11,5 +11,6 @@ func _ready():
 func _process(delta):
 	if (mouse_inside):
 		if (Input.is_action_just_pressed("Fire")):
-			print("Creditos")
+			Global.reset_game_data()
+			get_tree().change_scene_to_file("res://Scenes/cutscenes/creditos.tscn")
 	pass

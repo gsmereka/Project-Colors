@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cey63ipixabpd"]
+
+[ext_resource type="Script" path="res://Scripts/dialogos/tutorial.gd" id="1_j8gi6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x87nt"]
+radius = 200.0
+
+[node name="tutorial" type="Area2D" node_paths=PackedStringArray("_hud")]
+script = ExtResource("1_j8gi6")
+_hud = NodePath("hud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x87nt")
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
