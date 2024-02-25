@@ -117,8 +117,8 @@ volume_db = -15.0
 
 [node name="laser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_t2qqb")
-volume_db = -5.0
-pitch_scale = 0.3
+volume_db = -10.0
+pitch_scale = 0.2
 
 [node name="player_hurt_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ejlkt")
@@ -317,7 +317,7 @@ offset_bottom = 119.0
 scale = Vector2(2, 2)
 texture = ExtResource("19_a713n")
 
-[node name="RayCast2D" type="RayCast2D" parent="." node_paths=PackedStringArray("sparkle", "occluder", "limit", "parede_sound")]
+[node name="RayCast2D" type="RayCast2D" parent="." node_paths=PackedStringArray("sparkle", "occluder", "limit", "enemy_scream")]
 position = Vector2(80, 0)
 target_position = Vector2(883, 0)
 collision_mask = 33
@@ -326,12 +326,13 @@ script = ExtResource("18_ieka3")
 sparkle = NodePath("Light")
 occluder = NodePath("../FOV/right")
 limit = NodePath("LightOccluder2D")
-parede_sound = NodePath("parede_som")
+enemy_scream = NodePath("parede_som")
 
 [node name="parede_som" type="AudioStreamPlayer2D" parent="RayCast2D"]
 position = Vector2(-80, 0)
-stream = ExtResource("2_t2qqb")
+stream = ExtResource("4_ejlkt")
 volume_db = -5.0
+pitch_scale = 2.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="RayCast2D"]
 occluder = SubResource("OccluderPolygon2D_qgy8h")

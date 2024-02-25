@@ -1,7 +1,7 @@
 extends Node2D
 
 var damage = 1
-var speed = 1
+var speed = 5
 var target: Vector2
 var direction = 1
 var _state: int = cima
@@ -61,7 +61,7 @@ func _on_lifetime_timeout():
 	pass # Replace with function body.
 
 func _on_gota_colisão_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("grupoplayer"):
+	if body.is_in_group("playable"):
 		body.hp -= damage
 		queue_free()
 	pass # Replace with function body.

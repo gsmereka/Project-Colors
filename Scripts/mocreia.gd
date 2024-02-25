@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var scream_sound: AudioStreamPlayer2D = null
 @export var musica_boss: AudioStreamPlayer = null
-@export var hp = 200
+@export var hp = 500
 @export var type = -1
 @export var shield_sprite: Sprite2D
 @export var shield: CollisionShape2D
@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 var init_time
 var time
-var limit_time = 3000
+var limit_time = 2000
 var fight_begin
 
 var counter = 0

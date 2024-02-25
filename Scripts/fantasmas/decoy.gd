@@ -5,7 +5,7 @@ var target : Vector2
 var _state: int = rotate
 var damage = 1
 var direction_rotate = 0.0
-var radius= 125
+var radius= 150
 
 @onready var _animate :=  $decoy_anim  as AnimatedSprite2D
 
@@ -14,7 +14,7 @@ enum {rotate, dead}
 	
 
 func _physics_process(delta):
-
+	get_node("decoy_anim").rotation += 0.05
 	match _state:
 		rotate:
 			_rotate(target, delta)
@@ -30,7 +30,7 @@ func _dead():
 
 func _rotate(target, delta):
 	direction_rotate += delta
-	position = Vector2(sin(direction_rotate * (speed/100))* radius, cos(direction_rotate * (speed/100))* radius) + target
+	position = Vector2(sin(direction_rotate * (speed/25))* radius, cos(direction_rotate * (speed/25))* radius) + target
 		
 func _on_perseguir_body_entered(body):
 	if body.is_in_group("playable"):

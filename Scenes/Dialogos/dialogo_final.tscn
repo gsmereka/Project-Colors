@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm5je86lyrqw6"]
+[gd_scene load_steps=5 format=3 uid="uid://bm5je86lyrqw6"]
 
 [ext_resource type="Script" path="res://Scripts/dialogos/dialogo_final.gd" id="1_y3a2e"]
 [ext_resource type="Script" path="res://Scripts/final_hud.gd" id="2_1onyt"]
+[ext_resource type="AudioStream" uid="uid://dcexrcs1e4j7u" path="res://Musics/musicas/Scott Joplin   The Easy Winners A Ragtime Two Step (1901.mp3" id="3_bjbqu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x87nt"]
 radius = 183.003
@@ -31,6 +32,12 @@ color = Color(0, 0, 0, 1)
 
 [node name="hud" type="CanvasLayer" parent="."]
 script = ExtResource("2_1onyt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bjbqu")
+volume_db = -12.0
+pitch_scale = 1.2
+autoplay = true
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

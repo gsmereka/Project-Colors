@@ -8,7 +8,7 @@ var _target : Vector2
 var direction :Vector2
 var pos_start:Vector2
 var pos_cur:Vector2
-@export var hp = 50
+@export var hp = 120
 @onready var max_hp = hp
 var damage = 1
 @export var type = 0
@@ -19,6 +19,18 @@ enum {persue, back, dead, iddle, explode, attack, low_hp}
 
 var enemy: bool = false
 
+var counter = 0
+var counter_limit = 5
+
+func _hit_animation():
+	counter += 1
+	if (counter == counter_limit):
+		if (_transform.modulate == Color(1,1,1,1)):
+			_transform.modulate = Color(0,0,0,1)
+		elif (_transform.modulate == Color(0,0,0,1)):
+			_transform.modulate = Color(1,1,1,1)
+		counter = 0
+
 func _physics_process(delta):
 	if hp  ==  0:
 		_dead()
@@ -28,6 +40,10 @@ func _physics_process(delta):
 			pass
 	if hp != max_hp:
 		enemy = true
+		max_hp = hp
+		_hit_animation()
+	else:
+		_transform.modulate = Color(1,1,1,1)
 	if (!enemy):
 		_iddle()
 		return
@@ -160,5 +176,5 @@ func _on_hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape
 	if (!body):
 		return
 	if body.is_in_group("projetil"):
-		hp -= body.damage
+		hp -= 1
 	pass # Replace with function body.

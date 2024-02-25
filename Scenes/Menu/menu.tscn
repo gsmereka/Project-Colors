@@ -149,10 +149,11 @@ skin = 1
 
 [node name="configurações" type="TextureButton" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_tiesj")
-offset_left = 1674.0
-offset_top = 58.0
-offset_right = 1815.0
-offset_bottom = 190.0
+offset_left = 1781.0
+offset_top = 49.0
+offset_right = 1922.0
+offset_bottom = 181.0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("13_migv6")
 ignore_texture_size = true
 stretch_mode = 0
@@ -160,10 +161,10 @@ script = ExtResource("14_p38kh")
 
 [node name="Control" type="Control" parent="CanvasLayer/configurações"]
 anchors_preset = 0
-offset_left = 26.0
-offset_top = 22.0
-offset_right = 117.0
-offset_bottom = 105.0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 158.0
+offset_bottom = 144.0
 script = ExtResource("5_cyirg")
 color = Color(0.458824, 0.0745098, 0.0745098, 1)
 skin = 1
@@ -171,7 +172,9 @@ config = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_es2j5")
+volume_db = 10.0
 autoplay = true
+attenuation = 0.060371
 
 [connection signal="mouse_entered" from="CanvasLayer/Iniciar/Control" to="CanvasLayer/Iniciar/Control" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Iniciar/Control" to="CanvasLayer/Iniciar/Control" method="_on_mouse_exited"]

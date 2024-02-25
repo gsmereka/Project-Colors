@@ -49,6 +49,7 @@ func _ready():
 	keys = Global.player_keys
 	init_step_time = Time.get_ticks_msec()
 	interface.visible = true
+	die = false
 		
 
 func prepare_dimension():
@@ -166,20 +167,22 @@ var die: bool = false
 @export var luz2: PointLight2D = null
 
 func _player_die():
-	if (animação_morte.frame == 8):
-		change_scene()
-	if (hp == 0):
+	if (hp <= 0):
+		if (laser_sound.playing):
+			laser_sound.stop()
+		if (steps.playing):
+			steps.stop()
 		player_sprite.visible = false
 		animação_morte.visible = true
 		bigluz.enabled = false
 		luz.enabled = false
 		luz2.enabled = false
 		if (!animação_morte.is_playing()):
-			#animação_morte.frame = 0
 			animação_morte.play()
-		die = true
-	#if (Input.is_action_just_pressed("Fire")):
+		die = true	#if (Input.is_action_just_pressed("Fire")):
 		#change_scene()
+	if (animação_morte.frame == 8):
+		change_scene()
 	pass
 
 @onready var save_hp = hp
@@ -188,7 +191,6 @@ var pause_node = preload("res://Scenes/Menu/pause.tscn")
 			
 	
 func _physics_process(delta):
-		
 	if (!die):
 		if (hp != save_hp):
 			if (!hurt_sound.playing):

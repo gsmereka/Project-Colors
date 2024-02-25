@@ -422,7 +422,6 @@ collision_mask = 33
 script = ExtResource("9_j4wkb")
 scream_sound = NodePath("grito_veia")
 musica_boss = NodePath("musica_boss")
-hp = 500
 shield_sprite = NodePath("shield_sprite")
 shield = NodePath("Bolha_protetora/CollisionShape2D")
 veia_sprite = NodePath("VeaMocoronga")

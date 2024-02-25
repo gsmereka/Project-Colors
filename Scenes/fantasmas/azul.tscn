@@ -83,8 +83,10 @@ radius = 6.79869
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8a5d"]
 radius = 6.14636
 
-[node name="azul" type="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
+[node name="azul" type="CharacterBody2D" groups=["killable"]]
+scale = Vector2(5, 5)
+collision_layer = 96
+collision_mask = 96
 script = ExtResource("1_1d56h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -96,7 +98,7 @@ shape = SubResource("CircleShape2D_8fvkr")
 
 [node name="cooldown" type="Timer" parent="."]
 process_callback = 0
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -108,6 +110,7 @@ debug_color = Color(1, 0, 0.117647, 0.419608)
 [node name="wall_detector" type="RayCast2D" parent="."]
 position = Vector2(2, -11.3333)
 target_position = Vector2(25, 0)
+collision_mask = 64
 collide_with_areas = true
 
 [node name="spawn_choro" type="Marker2D" parent="."]

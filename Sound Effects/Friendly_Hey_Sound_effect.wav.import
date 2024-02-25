@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://de7lk3d4mp8eg"
+path="res://.godot/imported/Friendly_Hey_Sound_effect.wav-9a1dabb8d5e97291bbcc409c1ee42752.sample"
+
+[deps]
+
+source_file="res://Sound Effects/Friendly_Hey_Sound_effect.wav"
+dest_files=["res://.godot/imported/Friendly_Hey_Sound_effect.wav-9a1dabb8d5e97291bbcc409c1ee42752.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

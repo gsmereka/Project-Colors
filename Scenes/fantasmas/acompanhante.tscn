@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://diri80y0mjhf7"]
+
+[ext_resource type="Script" path="res://Scripts/fantasmas/acompanhante.gd" id="1_a4mtk"]
+[ext_resource type="Texture2D" uid="uid://b27u5lfqkksye" path="res://Sprites/fantasmas/euforia idel.png" id="2_ckwy8"]
+[ext_resource type="PackedScene" uid="uid://ket2rsqfn16r" path="res://Scenes/fantasmas/decoy.tscn" id="3_ou250"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3okd"]
+radius = 33.0151
+
+[node name="acompanhante" type="Node2D"]
+position = Vector2(-159, 164)
+rotation = -0.253073
+script = ExtResource("1_a4mtk")
+
+[node name="dano_do_fantasma" type="Area2D" parent="."]
+position = Vector2(190, 0)
+
+[node name="EuforiaIdel" type="Sprite2D" parent="dano_do_fantasma"]
+position = Vector2(-8, 5)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ckwy8")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dano_do_fantasma"]
+shape = SubResource("CircleShape2D_p3okd")
+
+[node name="decoy" parent="dano_do_fantasma" instance=ExtResource("3_ou250")]
+position = Vector2(85.7713, -119.767)

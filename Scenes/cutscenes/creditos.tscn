@@ -25,6 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_t17cy")
+volume_db = -7.0
 autoplay = true
 expand = true
 script = ExtResource("2_q7ra6")

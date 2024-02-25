@@ -10,7 +10,7 @@ size = Vector2(83.4711, 64.566)
 radius = 72.4016
 
 [node name="baú" type="StaticBody2D"]
-position = Vector2(623, 626)
+position = Vector2(4.00006, 7.00006)
 rotation = 1.35952
 script = ExtResource("1_k6bfu")
 

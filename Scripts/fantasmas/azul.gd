@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 
-const speed = 100
+const speed = 250
 const gota_scene = preload("res://Scenes/fantasmas/gota.tscn")
 
-var hp = 100
+var hp = 80
+var type = 1
 var damage = 1
 var direction = 1.0
 var gota_instance
@@ -17,11 +18,27 @@ var radius = 100
 @onready var spawn_choro = $spawn_choro as Marker2D
 
 
+var counter = 0
+var counter_limit = 5
+@onready var hplimit = hp
+func _hit_animation():
+	if (hp != hplimit):
+		counter += 1
+		if (counter == counter_limit):
+			if (_animate.modulate == Color(1,1,1,1)):
+				_animate.modulate = Color(0,0,0,1)
+			elif (_animate.modulate == Color(0,0,0,1)):
+				_animate.modulate = Color(1,1,1,1)
+			counter = 0
+		hplimit = hp
+	else:
+		_animate.modulate = Color(1,1,1,1)
+
 func _physics_process(delta):
-		
+	_hit_animation()
 	_move()
 	
-	if hp == 0:
+	if hp <= 0:
 		dead()
 	
 func ready():
@@ -52,9 +69,9 @@ func _on_cooldown_timeout():
 	pass # Replace with function body.
 
 func _on_hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.is_in_group("grupoplayer"):
+	if body.is_in_group("playable"):
 		body.hp -= damage
-		hp -= body.damage
+		hp -= 1
 	pass # Replace with function body.
 
 

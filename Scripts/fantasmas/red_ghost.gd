@@ -15,8 +15,24 @@ var damage = 1
 
 enum {persue, back, dead, iddle, explode, attack, low_hp}
 
+var counter = 0
+var counter_limit = 5
+@onready var hplimit = hp
+func _hit_animation():
+	if (hp != hplimit):
+		counter += 1
+		if (counter == counter_limit):
+			if (_transform.modulate == Color(1,1,1,1)):
+				_transform.modulate = Color(0,0,0,1)
+			elif (_transform.modulate == Color(0,0,0,1)):
+				_transform.modulate = Color(1,1,1,1)
+			counter = 0
+		hplimit = hp
+	else:
+		_transform.modulate = Color(1,1,1,1)
 
 func _physics_process(delta):
+	_hit_animation()
 	if hp  ==  0:
 		_dead()
 	match _state:
@@ -145,5 +161,5 @@ func _on_hitbox_body_shape_entered(body_rid, body, body_shape_index, local_shape
 	if (!body):
 		return
 	if body.is_in_group("projetil"):
-		hp -= body.damage
+		hp -= 1
 	pass # Replace with function body.

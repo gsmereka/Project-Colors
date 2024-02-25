@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcexrcs1e4j7u"
+path="res://.godot/imported/Scott Joplin   The Easy Winners A Ragtime Two Step (1901.mp3-6ba07da9ed42b8f8528cf31697820283.mp3str"
+
+[deps]
+
+source_file="res://Musics/musicas/Scott Joplin   The Easy Winners A Ragtime Two Step (1901.mp3"
+dest_files=["res://.godot/imported/Scott Joplin   The Easy Winners A Ragtime Two Step (1901.mp3-6ba07da9ed42b8f8528cf31697820283.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

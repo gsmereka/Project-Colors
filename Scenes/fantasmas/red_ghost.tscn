@@ -219,7 +219,7 @@ animations = [{
 radius = 31.0161
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mw0lo"]
-radius = 485.016
+radius = 283.134
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lvx8"]
 radius = 19.0263
@@ -240,6 +240,7 @@ rotation = -1.5708
 target_position = Vector2(0, 110)
 
 [node name="ghost_animated" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_7f0vi")
 animation = &"red_attack"
@@ -251,6 +252,7 @@ debug_color = Color(0.811765, 0.788235, 0.054902, 0.419608)
 [node name="ghost_radar" type="Area2D" parent="."]
 
 [node name="persue_player" type="CollisionShape2D" parent="ghost_radar"]
+rotation = 0.00168872
 shape = SubResource("CircleShape2D_mw0lo")
 debug_color = Color(1, 1, 1, 0.419608)
 

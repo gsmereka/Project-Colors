@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj8nkanqp0l12"]
+
+[ext_resource type="Script" path="res://Scripts/fantasmas/gota.gd" id="1_1mmhj"]
+[ext_resource type="Texture2D" uid="uid://l3runxl4qp5s" path="res://Sprites/fantasmas/spritesheet.png" id="1_5e3y2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2whw"]
+atlas = ExtResource("1_5e3y2")
+region = Rect2(100, 16, 100, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qf5n"]
+atlas = ExtResource("1_5e3y2")
+region = Rect2(0, 16, 100, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sy8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2whw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qf5n")
+}],
+"loop": true,
+"name": &"gota_anim",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fag3t"]
+radius = 8.06226
+
+[node name="gota" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_1mmhj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.152941, 0.25098, 1, 1)
+sprite_frames = SubResource("SpriteFrames_8sy8c")
+animation = &"gota_anim"
+
+[node name="gota_colisão" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gota_colisão"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_fag3t")
+
+[node name="lifetime" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+autostart = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="body_shape_entered" from="gota_colisão" to="." method="_on_gota_colisão_body_shape_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
