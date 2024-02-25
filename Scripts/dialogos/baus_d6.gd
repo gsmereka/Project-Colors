@@ -12,6 +12,9 @@ func _process(delta):
 		return
 	if (Global.on_cutscene):
 		return
+	var hey = get_parent().get_parent().get_node("hey")
+	if (!hey.playing):
+		hey.play()
 	if (Input.is_action_just_pressed("Interact")):
 		Global.player_warning_text = ""
 		var new_Dialog: DialogScreen = _DIALOG_SCREEN.instantiate()
