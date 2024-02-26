@@ -12,9 +12,6 @@ func _process(delta):
 		return
 	if (Global.on_cutscene):
 		return
-	var hey = get_parent().get_parent().get_node("hey")
-	if (!hey.playing):
-		hey.play()
 	if (Input.is_action_just_pressed("Interact")):
 		Global.player_warning_text = ""
 		var new_Dialog: DialogScreen = _DIALOG_SCREEN.instantiate()
@@ -43,6 +40,9 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 	if (body.is_in_group("playable")):
 		player_inside = true
 		Global.on_cutscene = false
+		var hey = get_parent().get_parent().get_node("hey")
+		if (!hey.playing):
+			hey.play()
 		if (!Global.on_cutscene):
 			Global.player_warning_text = "O Caveira Quer Falar, pressione 'E'!"
 	pass # Replace with function body.

@@ -2453,6 +2453,11 @@ position = Vector2(-2753, -2167)
 [node name="conversaveis" type="Node2D" parent="fantasmas"]
 scale = Vector2(1.00201, 0.998368)
 
+[node name="hey" type="AudioStreamPlayer" parent="fantasmas/conversaveis"]
+stream = ExtResource("44_w3idg")
+volume_db = -7.0
+pitch_scale = 0.9
+
 [node name="recepcionista" parent="fantasmas/conversaveis" node_paths=PackedStringArray("dialogo") instance=ExtResource("18_hes6a")]
 position = Vector2(-2238.5, 2673.36)
 dialogo = NodePath("dialogo_recepcionista")
@@ -2534,7 +2539,7 @@ position = Vector2(864, -1141)
 position = Vector2(70, -983)
 
 [node name="red_ghost7" parent="fantasmas/vermelhos/mapa_5" instance=ExtResource("17_1j5pm")]
-position = Vector2(-92, -1929)
+position = Vector2(-254, -1714)
 
 [node name="red_ghost6" parent="fantasmas/vermelhos/mapa_5" instance=ExtResource("17_1j5pm")]
 position = Vector2(-772, -1151)
@@ -2637,7 +2642,7 @@ shape = SubResource("RectangleShape2D_qbv8u")
 
 [node name="Player" parent="." instance=ExtResource("6_brblj")]
 process_priority = -1
-position = Vector2(-5024, 4634)
+position = Vector2(-5027, 4676)
 
 [node name="lasers" type="Node2D" parent="."]
 
@@ -2838,7 +2843,8 @@ texture = ExtResource("10_1lx05")
 
 [node name="hey" type="AudioStreamPlayer" parent="Dialogos"]
 stream = ExtResource("44_w3idg")
-volume_db = -5.0
+volume_db = -7.0
+pitch_scale = 0.9
 
 [node name="mapa_0" type="Node2D" parent="Dialogos"]
 
@@ -2876,7 +2882,7 @@ position = Vector2(507, 853)
 [node name="mapa_4" type="Node2D" parent="Dialogos"]
 
 [node name="d7_labirinto" parent="Dialogos/mapa_4" instance=ExtResource("29_q7eyj")]
-position = Vector2(-937, -1813)
+position = Vector2(-933, -1970)
 
 [node name="pia" parent="Dialogos/mapa_4" instance=ExtResource("30_oeese")]
 position = Vector2(-617, -3755)
@@ -2903,7 +2909,7 @@ position = Vector2(-793, 2571)
 position = Vector2(-1824, 489)
 
 [node name="mapa_4" parent="Checkpoints" instance=ExtResource("21_hxft1")]
-position = Vector2(-2816, -191)
+position = Vector2(-2814, -169)
 
 [node name="mapa_5" parent="Checkpoints" instance=ExtResource("21_hxft1")]
 position = Vector2(-1296, -1631)
@@ -2918,7 +2924,6 @@ scale = Vector2(3, 3)
 boss_fight = true
 
 [node name="colisions" type="Node2D" parent="."]
-visible = false
 
 [node name="mapa_0" type="StaticBody2D" parent="colisions"]
 
@@ -3307,12 +3312,12 @@ stream = ExtResource("3_bu8hm")
 volume_db = 5.0
 pitch_scale = 0.5
 autoplay = true
-max_distance = 1800.0
-attenuation = 2.54912
+max_distance = 1100.0
+attenuation = 0.176777
 
 [node name="musica_piano" type="AudioStreamPlayer2D" parent="musicas"]
 process_mode = 3
-position = Vector2(-3294, 272)
+position = Vector2(-3415, 583)
 stream = ExtResource("3_bu8hm")
 volume_db = 5.0
 pitch_scale = 0.5
@@ -3324,7 +3329,7 @@ attenuation = 2.54912
 process_mode = 3
 position = Vector2(-1097, 1083)
 stream = ExtResource("4_j0ndg")
-max_distance = 6000.0
+max_distance = 8000.0
 attenuation = 0.164938
 
 [node name="area_musica" type="Area2D" parent="musicas/musica_labirinto_comlasers"]

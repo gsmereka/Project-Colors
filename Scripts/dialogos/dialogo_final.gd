@@ -45,7 +45,7 @@ var _dialog_data: Dictionary = {
 		},
 5: {
 		"faceset":"res://Sprites/Dialogo/ham/ham3.png",
-		"dialog": "Pelo menos algo de bom com essa confusão toda. Eu posso conduzir as almas de vocês para o pós vida, vocêss não precisam ficar presos nesse plano por toda a existência.",
+		"dialog": "Pelo menos algo de bom com essa confusão toda. Eu posso conduzir as almas de vocês para o pós vida, vocês não precisam ficar presos nesse plano por toda a existência.",
 		"title": "Ham"
 		},
 	6: {
