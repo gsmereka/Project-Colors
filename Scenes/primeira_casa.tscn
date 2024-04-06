@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=3 uid="uid://b77oq2qdlpkfj"]
+[gd_scene load_steps=169 format=3 uid="uid://b77oq2qdlpkfj"]
 
 [ext_resource type="Script" path="res://Scripts/dimensions.gd" id="1_2pgrn"]
 [ext_resource type="PackedScene" uid="uid://d754k7ft5tvl" path="res://Scenes/items/mesa_em_L.tscn" id="2_komv2"]
@@ -56,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://dffccjik1qrb" path="res://Musics/soundtrack_forest.mp3" id="51_vkftb"]
 [ext_resource type="Script" path="res://Scripts/musica/area_musica.gd" id="54_beao5"]
 [ext_resource type="AudioStream" uid="uid://ddktbtygsv7hs" path="res://Musics/musica_labirinto_cortada.mp3" id="56_e7jb5"]
+[ext_resource type="Script" path="res://Scripts/loading.gd" id="57_2xlnd"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u3nmk"]
 closed = false
@@ -2642,7 +2643,10 @@ shape = SubResource("RectangleShape2D_qbv8u")
 
 [node name="Player" parent="." instance=ExtResource("6_brblj")]
 process_priority = -1
-position = Vector2(-5027, 4676)
+position = Vector2(-12097, 5132)
+
+[node name="start" type="Marker2D" parent="."]
+position = Vector2(-5006, 4640)
 
 [node name="lasers" type="Node2D" parent="."]
 
@@ -2900,7 +2904,7 @@ position = Vector2(2502, -2390)
 position = Vector2(-2897, 2864)
 
 [node name="mapa_8" parent="Checkpoints" instance=ExtResource("21_hxft1")]
-position = Vector2(-5033, 4648)
+position = Vector2(-5020, 4629)
 
 [node name="mapa_2" parent="Checkpoints" instance=ExtResource("21_hxft1")]
 position = Vector2(-793, 2571)
@@ -3298,7 +3302,7 @@ shape = SubResource("RectangleShape2D_arwuo")
 [node name="musicas" type="Node2D" parent="."]
 
 [node name="musica_jardim" type="AudioStreamPlayer2D" parent="musicas"]
-process_mode = 3
+process_mode = 1
 position = Vector2(-4666, 4163)
 stream = ExtResource("51_vkftb")
 autoplay = true
@@ -3458,6 +3462,16 @@ occluder_light_mask = 2
 position = Vector2(1, -3)
 occluder = SubResource("OccluderPolygon2D_7t3b4")
 occluder_light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-12239, 5255)
+scale = Vector2(300, 300)
+texture = ExtResource("10_1lx05")
+
+[node name="loading" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("57_2xlnd")
 
 [connection signal="animation_finished" from="fantasmas/vermelhos/mapa_5/red_ghost9/ghost_animated" to="fantasmas/vermelhos/mapa_5/red_ghost9" method="_on_ghost_animated_animation_finished"]
 [connection signal="body_shape_entered" from="fantasmas/vermelhos/mapa_5/red_ghost9/ghost_radar" to="fantasmas/vermelhos/mapa_5/red_ghost9" method="_on_ghost_radar_body_shape_entered"]

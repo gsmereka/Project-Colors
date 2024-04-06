@@ -254,6 +254,7 @@ texture_scale = 2.0
 visible = false
 
 [node name="Label" type="Label" parent="player_hud" node_paths=PackedStringArray("icon")]
+visible = false
 offset_left = 98.0
 offset_top = 170.0
 offset_right = 699.0
@@ -279,6 +280,7 @@ texture = ExtResource("17_stn7l")
 script = ExtResource("18_20tt4")
 
 [node name="player_hp" type="Control" parent="player_hud" node_paths=PackedStringArray("hp1", "hp2", "hp3")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -7.0

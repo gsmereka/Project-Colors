@@ -9,6 +9,7 @@ font = ExtResource("2_liddd")
 font_size = 300
 
 [node name="faleceu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -46,6 +46,9 @@ func _ready():
 		self.visible = true
 	if (Global.checkpoint_position):
 		self.position = Global.checkpoint_position
+	else:
+		if get_parent().name == "Primeira casa":
+			self.position = get_parent().get_node("start").position
 	keys = Global.player_keys
 	init_step_time = Time.get_ticks_msec()
 	interface.visible = true

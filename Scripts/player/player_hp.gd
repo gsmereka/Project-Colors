@@ -5,6 +5,7 @@ extends Control
 @export var hp3: TextureRect = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.visible = true
 	pass # Replace with function body.
 
 
@@ -12,7 +13,7 @@ func _ready():
 func _process(delta):
 	if (!Global.player_node):
 		return
-	if (Global.player_node.hp == 3):
+	if (Global.player_node.hp >= 3):
 		hp1.visible = true
 		hp2.visible = true
 		hp3.visible = true
@@ -24,7 +25,7 @@ func _process(delta):
 		hp1.visible = true
 		hp2.visible = false
 		hp3.visible = false
-	if (Global.player_node.hp == 0):
+	if (Global.player_node.hp <= 0):
 		hp1.visible = false
 		hp2.visible = false
 		hp3.visible = false

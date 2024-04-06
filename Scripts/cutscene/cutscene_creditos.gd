@@ -13,6 +13,7 @@ func _process(delta):
 	if (aviso):
 		text.visible = true
 		if Input.is_action_just_pressed("Interact"):
+			Global.dimension_list = []
 			get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	pass
 
@@ -23,5 +24,6 @@ func _input(event):
 				aviso = true
 
 func _on_finished():
+	Global.dimension_list = []
 	get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 	pass # Replace with function body.
